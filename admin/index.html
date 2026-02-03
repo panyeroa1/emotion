@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succes Class Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; background: #f8fafc; }
+        .stat-card { transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); }
+        .table-row:hover { background: #f1f5f9; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-shield-halved text-white text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Succes Class Admin</h1>
+                    <p class="text-xs text-gray-500">User & Usage Management</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span id="connection-status" class="text-sm text-gray-500">
+                    <i class="fas fa-circle text-yellow-400 mr-1"></i> Connecting...
+                </span>
+                <button onclick="refreshData()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                    <i class="fas fa-refresh mr-2"></i>Refresh
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Stats Overview -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="stat-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-users text-blue-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Total</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800" id="stat-total-users">0</p>
+                <p class="text-sm text-gray-500 mt-1">Total Users</p>
+            </div>
+
+            <div class="stat-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-chalkboard-teacher text-green-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">Teachers</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800" id="stat-teachers">0</p>
+                <p class="text-sm text-gray-500 mt-1">Teacher Accounts</p>
+            </div>
+
+            <div class="stat-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Students</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800" id="stat-students">0</p>
+                <p class="text-sm text-gray-500 mt-1">Student Accounts</p>
+            </div>
+
+            <div class="stat-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-clock text-orange-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Usage</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800" id="stat-total-sessions">0</p>
+                <p class="text-sm text-gray-500 mt-1">Total Sessions</p>
+            </div>
+        </section>
+
+        <!-- Usage Stats -->
+        <section class="bg-white rounded-2xl border border-gray-100 shadow-sm mb-8">
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-lg font-bold text-gray-800">
+                    <i class="fas fa-chart-bar text-indigo-600 mr-2"></i>Usage Statistics
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                    <p class="text-4xl font-bold text-indigo-600" id="stat-total-rooms">0</p>
+                    <p class="text-sm text-gray-600 mt-2">Total Rooms Created</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                    <p class="text-4xl font-bold text-green-600" id="stat-total-messages">0</p>
+                    <p class="text-sm text-gray-600 mt-2">Total Messages</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl">
+                    <p class="text-4xl font-bold text-purple-600" id="stat-total-translations">0</p>
+                    <p class="text-sm text-gray-600 mt-2">Total Translations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-6">
+            <button onclick="showTab('users')" id="tab-users" class="tab-btn px-6 py-3 rounded-xl font-medium transition bg-indigo-600 text-white">
+                <i class="fas fa-users mr-2"></i>Users
+            </button>
+            <button onclick="showTab('roles')" id="tab-roles" class="tab-btn px-6 py-3 rounded-xl font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">
+                <i class="fas fa-user-tag mr-2"></i>Roles
+            </button>
+            <button onclick="showTab('rooms')" id="tab-rooms" class="tab-btn px-6 py-3 rounded-xl font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">
+                <i class="fas fa-door-open mr-2"></i>Rooms
+            </button>
+        </div>
+
+        <!-- Users Tab -->
+        <section id="panel-users" class="tab-panel bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-gray-800">
+                    <i class="fas fa-users text-indigo-600 mr-2"></i>User Management
+                </h2>
+                <button onclick="showAddUserModal()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                    <i class="fas fa-plus mr-2"></i>Add User
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">User</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Email</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Role</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Sessions</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Last Active</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                                <p>Loading users...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Roles Tab -->
+        <section id="panel-roles" class="tab-panel bg-white rounded-2xl border border-gray-100 shadow-sm hidden">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-gray-800">
+                    <i class="fas fa-user-tag text-indigo-600 mr-2"></i>Role Management
+                </h2>
+                <button onclick="showAddRoleModal()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                    <i class="fas fa-plus mr-2"></i>Add Role
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Role Name</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Permissions</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Users</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roles-table-body">
+                        <tr>
+                            <td colspan="4" class="px-6 py-12 text-center text-gray-400">
+                                <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                                <p>Loading roles...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Rooms Tab -->
+        <section id="panel-rooms" class="tab-panel bg-white rounded-2xl border border-gray-100 shadow-sm hidden">
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-lg font-bold text-gray-800">
+                    <i class="fas fa-door-open text-indigo-600 mr-2"></i>Room Activity
+                </h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Room Code</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Teacher</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Messages</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Questions</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Student Responses</th>
+                            <th class="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase">Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rooms-table-body">
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                                <p>Loading rooms...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add User Modal -->
+    <div id="add-user-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">Add New User</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="add-user-form" onsubmit="addUser(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="user-name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="user-email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                        <select id="user-role" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeModals()" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="flex-1 px-4 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Role Modal -->
+    <div id="add-role-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">Add New Role</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="add-role-form" onsubmit="addRole(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Role Name</label>
+                        <input type="text" id="role-name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Permissions</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions" value="create_room" class="rounded text-indigo-600">
+                                <span class="text-sm text-gray-600">Create Room</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions" value="broadcast" class="rounded text-indigo-600">
+                                <span class="text-sm text-gray-600">Broadcast Messages</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions" value="manage_students" class="rounded text-indigo-600">
+                                <span class="text-sm text-gray-600">Manage Students</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions" value="view_history" class="rounded text-indigo-600">
+                                <span class="text-sm text-gray-600">View History</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions" value="admin" class="rounded text-indigo-600">
+                                <span class="text-sm text-gray-600">Admin Access</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeModals()" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="flex-1 px-4 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700">Add Role</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="edit-user-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">Edit User</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="edit-user-form" onsubmit="updateUser(event)">
+                <input type="hidden" id="edit-user-id">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="edit-user-name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="edit-user-email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                        <select id="edit-user-role" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="closeModals()" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="flex-1 px-4 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, get, set, push, remove, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // Firebase Config (same as main app)
+        const FIREBASE_CONFIG = {
+            apiKey: "AIzaSyC93B2GgE3HzaWl5gW_mRroobQybaZNFJs",
+            authDomain: "macx-5feca.firebaseapp.com",
+            databaseURL: "https://macx-5feca-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "macx-5feca",
+            storageBucket: "macx-5feca.appspot.com"
+        };
+
+        const app = initializeApp(FIREBASE_CONFIG);
+        const db = getDatabase(app);
+
+        // Make available globally
+        window.db = db;
+        window.ref = ref;
+        window.get = get;
+        window.set = set;
+        window.push = push;
+        window.remove = remove;
+        window.onValue = onValue;
+
+        // Update connection status
+        document.getElementById('connection-status').innerHTML = '<i class="fas fa-circle text-green-400 mr-1"></i> Connected';
+
+        // Initial load
+        refreshData();
+    </script>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white');
+                b.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            document.getElementById(`panel-${tabName}`).classList.remove('hidden');
+            const btn = document.getElementById(`tab-${tabName}`);
+            btn.classList.remove('bg-gray-100', 'text-gray-600');
+            btn.classList.add('bg-indigo-600', 'text-white');
+        }
+
+        // Refresh all data
+        async function refreshData() {
+            await Promise.all([
+                loadUsers(),
+                loadRoles(),
+                loadRooms(),
+                loadStats()
+            ]);
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                // Load users stats
+                const usersSnap = await get(ref(db, 'admin/users'));
+                const users = usersSnap.val() || {};
+                const userList = Object.values(users);
+                
+                document.getElementById('stat-total-users').textContent = userList.length;
+                document.getElementById('stat-teachers').textContent = userList.filter(u => u.role === 'teacher').length;
+                document.getElementById('stat-students').textContent = userList.filter(u => u.role === 'student').length;
+                
+                // Calculate total sessions
+                const totalSessions = userList.reduce((sum, u) => sum + (u.sessions || 0), 0);
+                document.getElementById('stat-total-sessions').textContent = totalSessions;
+
+                // Load room stats
+                const chatsSnap = await get(ref(db, 'chats'));
+                const chats = chatsSnap.val() || {};
+                const roomKeys = Object.keys(chats);
+                
+                document.getElementById('stat-total-rooms').textContent = roomKeys.length;
+                
+                let totalMessages = 0;
+                let totalTranslations = 0;
+                
+                for (const roomKey of roomKeys) {
+                    const room = chats[roomKey];
+                    if (room.messages) totalMessages += Object.keys(room.messages).length;
+                    if (room.questions) totalMessages += Object.keys(room.questions).length;
+                    if (room.studentResponses) totalMessages += Object.keys(room.studentResponses).length;
+                    if (room.studentChats) totalMessages += Object.keys(room.studentChats).length;
+                    
+                    // Count translations (each message to a student is a translation)
+                    totalTranslations += totalMessages;
+                }
+                
+                document.getElementById('stat-total-messages').textContent = totalMessages;
+                document.getElementById('stat-total-translations').textContent = totalTranslations;
+                
+            } catch (err) {
+                console.error('Error loading stats:', err);
+            }
+        }
+
+        // Load users
+        async function loadUsers() {
+            try {
+                const snap = await get(ref(db, 'admin/users'));
+                const users = snap.val() || {};
+                const tbody = document.getElementById('users-table-body');
+                
+                if (Object.keys(users).length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                <i class="fas fa-users text-4xl mb-3"></i>
+                                <p>No users found. Add your first user.</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                tbody.innerHTML = Object.entries(users).map(([id, user]) => `
+                    <tr class="table-row border-b border-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    ${(user.name || 'U').charAt(0).toUpperCase()}
+                                </div>
+                                <span class="font-medium text-gray-800">${user.name || 'Unknown'}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">${user.email || '-'}</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${getRoleBadgeClass(user.role)}">
+                                ${user.role || 'student'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">${user.sessions || 0}</td>
+                        <td class="px-6 py-4 text-gray-500 text-sm">${formatDate(user.lastActive)}</td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-2">
+                                <button onclick="editUser('${id}')" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteUser('${id}')" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Error loading users:', err);
+            }
+        }
+
+        // Load roles
+        async function loadRoles() {
+            try {
+                const snap = await get(ref(db, 'admin/roles'));
+                let roles = snap.val();
+                
+                // Create default roles if none exist
+                if (!roles) {
+                    roles = {
+                        admin: { name: 'Admin', permissions: ['create_room', 'broadcast', 'manage_students', 'view_history', 'admin'] },
+                        teacher: { name: 'Teacher', permissions: ['create_room', 'broadcast', 'manage_students', 'view_history'] },
+                        student: { name: 'Student', permissions: ['view_history'] }
+                    };
+                    await set(ref(db, 'admin/roles'), roles);
+                }
+                
+                // Count users per role
+                const usersSnap = await get(ref(db, 'admin/users'));
+                const users = usersSnap.val() || {};
+                const roleCounts = {};
+                Object.values(users).forEach(u => {
+                    const role = u.role || 'student';
+                    roleCounts[role] = (roleCounts[role] || 0) + 1;
+                });
+                
+                const tbody = document.getElementById('roles-table-body');
+                tbody.innerHTML = Object.entries(roles).map(([id, role]) => `
+                    <tr class="table-row border-b border-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 ${getRoleIconBg(id)} rounded-xl flex items-center justify-center">
+                                    <i class="fas ${getRoleIcon(id)} text-lg"></i>
+                                </div>
+                                <span class="font-medium text-gray-800">${role.name || id}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-wrap gap-1">
+                                ${(role.permissions || []).map(p => `
+                                    <span class="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs">${p}</span>
+                                `).join('')}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">${roleCounts[id] || 0} users</td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-2">
+                                <button onclick="editRole('${id}')" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                ${id !== 'admin' && id !== 'teacher' && id !== 'student' ? `
+                                    <button onclick="deleteRole('${id}')" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Error loading roles:', err);
+            }
+        }
+
+        // Load rooms
+        async function loadRooms() {
+            try {
+                const snap = await get(ref(db, 'chats'));
+                const chats = snap.val() || {};
+                const tbody = document.getElementById('rooms-table-body');
+                
+                if (Object.keys(chats).length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                <i class="fas fa-door-open text-4xl mb-3"></i>
+                                <p>No rooms created yet.</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                tbody.innerHTML = Object.entries(chats).map(([roomCode, room]) => {
+                    const meta = room.meta || {};
+                    const msgCount = room.messages ? Object.keys(room.messages).length : 0;
+                    const qCount = room.questions ? Object.keys(room.questions).length : 0;
+                    const rCount = room.studentResponses ? Object.keys(room.studentResponses).length : 0;
+                    
+                    return `
+                        <tr class="table-row border-b border-gray-50">
+                            <td class="px-6 py-4">
+                                <span class="font-mono font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">${roomCode}</span>
+                            </td>
+                            <td class="px-6 py-4 text-gray-600">${meta.teacherName || meta.teacher || 'Unknown'}</td>
+                            <td class="px-6 py-4 text-gray-600">${msgCount}</td>
+                            <td class="px-6 py-4 text-gray-600">${qCount}</td>
+                            <td class="px-6 py-4 text-gray-600">${rCount}</td>
+                            <td class="px-6 py-4 text-gray-500 text-sm">${formatDate(meta.createdAt)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (err) {
+                console.error('Error loading rooms:', err);
+            }
+        }
+
+        // Helper functions
+        function getRoleBadgeClass(role) {
+            switch (role) {
+                case 'admin': return 'bg-red-100 text-red-700';
+                case 'teacher': return 'bg-green-100 text-green-700';
+                default: return 'bg-blue-100 text-blue-700';
+            }
+        }
+
+        function getRoleIcon(role) {
+            switch (role) {
+                case 'admin': return 'fa-shield-halved text-red-600';
+                case 'teacher': return 'fa-chalkboard-teacher text-green-600';
+                default: return 'fa-graduation-cap text-blue-600';
+            }
+        }
+
+        function getRoleIconBg(role) {
+            switch (role) {
+                case 'admin': return 'bg-red-100';
+                case 'teacher': return 'bg-green-100';
+                default: return 'bg-blue-100';
+            }
+        }
+
+        function formatDate(timestamp) {
+            if (!timestamp) return 'Never';
+            const date = new Date(timestamp);
+            return date.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Modal functions
+        function showAddUserModal() {
+            document.getElementById('add-user-modal').classList.remove('hidden');
+        }
+
+        function showAddRoleModal() {
+            document.getElementById('add-role-modal').classList.remove('hidden');
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.fixed').forEach(m => m.classList.add('hidden'));
+        }
+
+        // CRUD operations
+        async function addUser(e) {
+            e.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const role = document.getElementById('user-role').value;
+            
+            try {
+                await push(ref(db, 'admin/users'), {
+                    name,
+                    email,
+                    role,
+                    sessions: 0,
+                    createdAt: Date.now(),
+                    lastActive: null
+                });
+                closeModals();
+                document.getElementById('add-user-form').reset();
+                refreshData();
+            } catch (err) {
+                console.error('Error adding user:', err);
+                alert('Failed to add user');
+            }
+        }
+
+        async function addRole(e) {
+            e.preventDefault();
+            const name = document.getElementById('role-name').value;
+            const permissions = Array.from(document.querySelectorAll('#add-role-form input[name="permissions"]:checked')).map(i => i.value);
+            
+            const roleId = name.toLowerCase().replace(/\s+/g, '_');
+            
+            try {
+                await set(ref(db, `admin/roles/${roleId}`), {
+                    name,
+                    permissions
+                });
+                closeModals();
+                document.getElementById('add-role-form').reset();
+                refreshData();
+            } catch (err) {
+                console.error('Error adding role:', err);
+                alert('Failed to add role');
+            }
+        }
+
+        window.usersData = {};
+
+        async function editUser(userId) {
+            try {
+                const snap = await get(ref(db, `admin/users/${userId}`));
+                const user = snap.val();
+                if (user) {
+                    document.getElementById('edit-user-id').value = userId;
+                    document.getElementById('edit-user-name').value = user.name || '';
+                    document.getElementById('edit-user-email').value = user.email || '';
+                    document.getElementById('edit-user-role').value = user.role || 'student';
+                    document.getElementById('edit-user-modal').classList.remove('hidden');
+                }
+            } catch (err) {
+                console.error('Error loading user:', err);
+            }
+        }
+
+        async function updateUser(e) {
+            e.preventDefault();
+            const userId = document.getElementById('edit-user-id').value;
+            const name = document.getElementById('edit-user-name').value;
+            const email = document.getElementById('edit-user-email').value;
+            const role = document.getElementById('edit-user-role').value;
+            
+            try {
+                const snap = await get(ref(db, `admin/users/${userId}`));
+                const existing = snap.val() || {};
+                
+                await set(ref(db, `admin/users/${userId}`), {
+                    ...existing,
+                    name,
+                    email,
+                    role
+                });
+                closeModals();
+                refreshData();
+            } catch (err) {
+                console.error('Error updating user:', err);
+                alert('Failed to update user');
+            }
+        }
+
+        async function deleteUser(userId) {
+            if (!confirm('Are you sure you want to delete this user?')) return;
+            
+            try {
+                await remove(ref(db, `admin/users/${userId}`));
+                refreshData();
+            } catch (err) {
+                console.error('Error deleting user:', err);
+                alert('Failed to delete user');
+            }
+        }
+
+        async function editRole(roleId) {
+            alert('Edit role functionality - coming soon');
+        }
+
+        async function deleteRole(roleId) {
+            if (!confirm('Are you sure you want to delete this role?')) return;
+            
+            try {
+                await remove(ref(db, `admin/roles/${roleId}`));
+                refreshData();
+            } catch (err) {
+                console.error('Error deleting role:', err);
+                alert('Failed to delete role');
+            }
+        }
+
+        // Make functions globally available
+        window.showTab = showTab;
+        window.refreshData = refreshData;
+        window.showAddUserModal = showAddUserModal;
+        window.showAddRoleModal = showAddRoleModal;
+        window.closeModals = closeModals;
+        window.addUser = addUser;
+        window.addRole = addRole;
+        window.editUser = editUser;
+        window.updateUser = updateUser;
+        window.deleteUser = deleteUser;
+        window.editRole = editRole;
+        window.deleteRole = deleteRole;
+    </script>
+</body>
+</html>
