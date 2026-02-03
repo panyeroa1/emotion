@@ -580,209 +580,22 @@
         // --- CREDENTIALS ---
         const CREDENTIALS = {
             DEEPGRAM: "11ee938d032ce7c36c6fa82338274be5e4ada847",
-            CARTESIA: "sk_car_pgV2K2dTFBabX41CXEeeDv",
+            CARTESIA: "sk_car_yWEX9Mp2LwKju8FXyosGhj",
             CARTESIA_VOICES: {
-                // Primary language voices
-                "en": "79a125e8-cd45-4c13-8a67-188112f4dd22", // British Lady
-                "es": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Spanish Narrator Lady
-                "fr": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Calm French Woman
-                "de": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // German Storyteller
-                "zh-CN": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Chinese Female Narrator
-                "zh-TW": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Chinese Female (same)
+                "en": "cbaf8084-f009-4838-a096-07ee2e6612b1", // Cathy
                 "hi": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Riya
+                "es": "5c5ad5e7-1020-476b-8b91-fdcbe9cc313c", // Daniela
+                "de": "38aabb6a-f52b-4fb0-a3d1-988518f4dc06", // Alina
                 "ar": "002622d8-19d0-4567-a16a-f99c7397c062", // Huda
-                "pt-BR": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
-                "pt-PT": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
-                "pt": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
-                "ru": "2ee87411-6fba-4d32-9969-756368d59d7c", // Russian Female
-                "ja": "2b568345-1d48-4047-b25f-7baccf842eb0", // Yumiko
+                "fr": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Calm French Woman
                 "ko": "304fdbd8-65e6-40d6-ab78-f9d18b9efdf9", // Jihyun
-                "vi": "fb5df5ef-91ac-4fa4-a1e4-e3c4d32e0dd8", // Vietnamese Female
-                "it": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Italian Female
-                "tr": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Turkish Female
-                "nl": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Dutch Female
-                "nl-BE": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Flemish (Dutch)
-                "pl": "69263e20-3496-4b53-a74e-e9e7c0ae9a42", // Polish Female
-                "uk": "fb26b779-5b56-4a2b-929d-e6d36ff68b76", // Ukrainian Female
-                "ro": "db832ecc-4f87-4781-a06f-c18aa9f941b8", // Romanian Female
-                "el": "359f7c60-b085-4b2e-9563-27b03bd9d7ea", // Greek Female
-                "cs": "eb7ca2ca-7e16-4608-ad79-7b7970f4a7ac", // Czech Female
-                "hu": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Hungarian Female
-                "sv": "5f994e1d-2dec-43b5-8dfd-d7e3ec43f1c8", // Swedish Female
-                "da": "a4a9b39e-0a4a-47f3-af8f-5f5ce87be8a3", // Danish Female
-                "no": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Norwegian Female
-                "fi": "726d5bd6-f1a3-4fc4-b86a-d14738c5d4fe", // Finnish Female
-                "sk": "eb7ca2ca-7e16-4608-ad79-7b7970f4a7ac", // Slovak (Czech fallback)
-                "bg": "2ee87411-6fba-4d32-9969-756368d59d7c", // Bulgarian (Russian fallback)
-                "hr": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Croatian Female
-                "sr": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Serbian (Croatian fallback)
-                "sl": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Slovenian (Croatian fallback)
-                "lt": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Lithuanian (Hungarian fallback)
-                "lv": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Latvian (Hungarian fallback)
-                "et": "726d5bd6-f1a3-4fc4-b86a-d14738c5d4fe", // Estonian (Finnish fallback)
-                "is": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Icelandic (Norwegian fallback)
-                "ga": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Irish (English fallback)
-                "cy": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Welsh (English fallback)
-                "gd": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Scots Gaelic (English fallback)
-                "sq": "359f7c60-b085-4b2e-9563-27b03bd9d7ea", // Albanian (Greek fallback)
-                "mk": "2ee87411-6fba-4d32-9969-756368d59d7c", // Macedonian (Russian fallback)
-                "mt": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Maltese (Italian fallback)
-                "th": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Thai Female
-                "id": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Indonesian Female
-                "ms": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Malay (Indonesian fallback)
-                "fil": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Filipino Female
-                "pa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Punjabi (Hindi fallback)
-                "te": "07bc462a-c644-49f1-baf7-82d5599131be", // Sindhu Telugu
-                "mr": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Marathi (Hindi fallback)
-                "ta": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Kavya Tamil
-                "gu": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Gujarati (Hindi fallback)
-                "kn": "07bc462a-c644-49f1-baf7-82d5599131be", // Kannada (Telugu fallback)
-                "ml": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Malayalam (Tamil fallback)
-                "bn": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Bengali (Hindi fallback)
-                "my": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Burmese (Thai fallback)
-                "km": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Khmer (Thai fallback)
-                "lo": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Lao (Thai fallback)
-                "si": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Sinhala (Hindi fallback)
-                "ne": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Nepali (Hindi fallback)
-                "sw": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Swahili Female
-                "am": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Amharic (Swahili fallback)
-                "yo": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Yoruba (Swahili fallback)
-                "ig": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Igbo (Swahili fallback)
-                "zu": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Zulu (Swahili fallback)
-                "xh": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Xhosa (Swahili fallback)
-                "af": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Afrikaans (Dutch fallback)
-                "ha": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Hausa (Swahili fallback)
-                "so": "002622d8-19d0-4567-a16a-f99c7397c062", // Somali (Arabic fallback)
-                "qu": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Quechua (Spanish fallback)
-                "ay": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Aymara (Spanish fallback)
-                "gn": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Guarani (Spanish fallback)
-                "ht": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Haitian Creole (French fallback)
-                "he": "f8913ce6-7734-4e5d-b9ec-e2fff5fc5db3", // Hebrew Female
-                "fa": "002622d8-19d0-4567-a16a-f99c7397c062", // Persian (Arabic fallback)
-                "ps": "002622d8-19d0-4567-a16a-f99c7397c062", // Pashto (Arabic fallback)
-                "ur": "002622d8-19d0-4567-a16a-f99c7397c062", // Urdu (Arabic fallback)
-                "sd": "002622d8-19d0-4567-a16a-f99c7397c062", // Sindhi (Arabic fallback)
-                "prs": "002622d8-19d0-4567-a16a-f99c7397c062", // Dari (Arabic fallback)
-                "ku": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Kurdish (Turkish fallback)
-                "ckb": "002622d8-19d0-4567-a16a-f99c7397c062", // Kurdish Sorani (Arabic fallback)
-                "kk": "2ee87411-6fba-4d32-9969-756368d59d7c", // Kazakh (Russian fallback)
-                "ky": "2ee87411-6fba-4d32-9969-756368d59d7c", // Kyrgyz (Russian fallback)
-                "uz": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Uzbek (Turkish fallback)
-                "tk": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Turkmen (Turkish fallback)
-                "tg": "2ee87411-6fba-4d32-9969-756368d59d7c", // Tajik (Russian fallback)
-                "az": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Azerbaijani (Turkish fallback)
-                "hy": "2ee87411-6fba-4d32-9969-756368d59d7c", // Armenian (Russian fallback)
-                "ka": "2ee87411-6fba-4d32-9969-756368d59d7c", // Georgian (Russian fallback)
-                "mn": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Mongolian (Chinese fallback)
-                "bo": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Tibetan (Chinese fallback)
-                "ug": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Uyghur (Chinese fallback)
-                "yue": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Cantonese (Chinese fallback)
-                "hmn": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Hmong (Chinese fallback)
-                "jv": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Javanese (Indonesian fallback)
-                "su": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Sundanese (Indonesian fallback)
-                "ceb": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Cebuano (Filipino fallback)
-                "ilo": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Ilocano (Filipino fallback)
-                "hil": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Hiligaynon (Filipino fallback)
-                "pam": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Kapampangan (Filipino fallback)
-                "bik": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Bikol (Filipino fallback)
-                "mi": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Maori (English fallback)
-                "haw": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Hawaiian (English fallback)
-                "sm": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Samoan (English fallback)
-                "to": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Tongan (English fallback)
-                "fj": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Fijian (English fallback)
-                "ty": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Tahitian (French fallback)
-                "mh": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Marshallese (English fallback)
-                "ch": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Chamorro (English fallback)
-                "chk": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Chuukese (English fallback)
-                "eu": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Basque (Spanish fallback)
-                "ca": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Catalan (Spanish fallback)
-                "gl": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Galician (Spanish fallback)
-                "br": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Breton (French fallback)
-                "co": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Corsican (Italian fallback)
-                "fur": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Friulian (Italian fallback)
-                "fy": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Frisian (Dutch fallback)
-                "lb": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // Luxembourgish (German fallback)
-                "fo": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Faroese (Norwegian fallback)
-                "la": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Latin (Italian fallback)
-                "eo": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Esperanto (English fallback)
-                "sa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Sanskrit (Hindi fallback)
-                "yi": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // Yiddish (German fallback)
-                "gv": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Manx (English fallback)
-                "kl": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Kalaallisut (Norwegian fallback)
-                "iu": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Inuktut (English fallback)
-                "fr-CA": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // French Canada (French)
-                "jam": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Jamaican Patois (English fallback)
-                "kri": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Krio (English fallback)
-                // African languages
-                "ee": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Ewe (Swahili fallback)
-                "ff": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Fulani (French fallback)
-                "fon": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Fon (French fallback)
-                "gaa": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Ga (Swahili fallback)
-                "bm": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Bambara (French fallback)
-                "bau": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Baoulé (French fallback)
-                "dyu": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Dyula (French fallback)
-                "ny": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Chichewa (Swahili fallback)
-                "rw": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Kinyarwanda (French fallback)
-                "rn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Rundi (Swahili fallback)
-                "lg": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Luganda (Swahili fallback)
-                "luo": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Luo (Swahili fallback)
-                "ln": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Lingala (French fallback)
-                "kg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Kikongo (French fallback)
-                "sn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Shona (Swahili fallback)
-                "nso": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Sepedi (Swahili fallback)
-                "st": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Sesotho (Swahili fallback)
-                "tn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Tswana (Swahili fallback)
-                "ts": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Tsonga (Swahili fallback)
-                "ss": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Swati (Swahili fallback)
-                "ve": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Venda (Swahili fallback)
-                "ti": "002622d8-19d0-4567-a16a-f99c7397c062", // Tigrinya (Arabic fallback)
-                "om": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Oromo (Swahili fallback)
-                "ak": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Twi (Swahili fallback)
-                "wo": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Wolof (French fallback)
-                "kr": "002622d8-19d0-4567-a16a-f99c7397c062", // Kanuri (Arabic fallback)
-                "sg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Sango (French fallback)
-                "alu": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Alur (French fallback)
-                "ach": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Acholi (Swahili fallback)
-                "din": "002622d8-19d0-4567-a16a-f99c7397c062", // Dinka (Arabic fallback)
-                "bem": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Bemba (Swahili fallback)
-                // Central Asian / Caucasus
-                "be": "2ee87411-6fba-4d32-9969-756368d59d7c", // Belarusian (Russian fallback)
-                "ab": "2ee87411-6fba-4d32-9969-756368d59d7c", // Abkhaz (Russian fallback)
-                "av": "2ee87411-6fba-4d32-9969-756368d59d7c", // Avar (Russian fallback)
-                "ba": "2ee87411-6fba-4d32-9969-756368d59d7c", // Bashkir (Russian fallback)
-                "ce": "2ee87411-6fba-4d32-9969-756368d59d7c", // Chechen (Russian fallback)
-                "cv": "2ee87411-6fba-4d32-9969-756368d59d7c", // Chuvash (Russian fallback)
-                "crh": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Crimean Tatar (Turkish fallback)
-                "bua": "2ee87411-6fba-4d32-9969-756368d59d7c", // Buryat (Russian fallback)
-                "tt": "2ee87411-6fba-4d32-9969-756368d59d7c", // Tatar (Russian fallback)
-                // South/Southeast Asian regional
-                "as": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Assamese (Hindi fallback)
-                "bho": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Bhojpuri (Hindi fallback)
-                "mai": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Maithili (Hindi fallback)
-                "awa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Awadhi (Hindi fallback)
-                "doi": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Dogri (Hindi fallback)
-                "kha": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Khasi (Hindi fallback)
-                "or": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Odia (Hindi fallback)
-                "dv": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Dhivehi (Hindi fallback)
-                "dz": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Dzongkha (Thai fallback)
-                "ccp": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Hakha Chin (Thai fallback)
-                "kac": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Jingpo (Thai fallback)
-                // Indonesian regional
-                "ace": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Acehnese (Indonesian fallback)
-                "ban": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Balinese (Indonesian fallback)
-                "iba": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Iban (Indonesian fallback)
-                "mad": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Madurese (Indonesian fallback)
-                "btk": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Karo (Indonesian fallback)
-                "bts": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Simalungun (Indonesian fallback)
-                "bbc": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Toba (Indonesian fallback)
-                "btv": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Betawi (Indonesian fallback)
-                "mg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Malagasy (French fallback)
-                // Middle East
-                "bal": "002622d8-19d0-4567-a16a-f99c7397c062", // Baluchi (Arabic fallback)
-                "aa": "002622d8-19d0-4567-a16a-f99c7397c062", // Afar (Arabic fallback)
-                "bs": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Bosnian (Croatian fallback)
-                // Default fallback
-                "default": "79a125e8-cd45-4c13-8a67-188112f4dd22"
+                "ja": "2b568345-1d48-4047-b25f-7baccf842eb0", // Yumiko
+                "pt": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
+                "ta": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Kavya
+                "te": "07bc462a-c644-49f1-baf7-82d5599131be", // Sindhu
+                "nl": "cbaf8084-f009-4838-a096-07ee2e6612b1", // Dutch (English fallback)
+                "nl-BE": "cbaf8084-f009-4838-a096-07ee2e6612b1", // Flemish (English fallback)
+                "default": "cbaf8084-f009-4838-a096-07ee2e6612b1"
             },
             FIREBASE: {
                 apiKey: "AIzaSyC93B2GgE3HzaWl5gW_mRroobQybaZNFJs",
