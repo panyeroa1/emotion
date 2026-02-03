@@ -597,6 +597,9 @@
                 "nl-BE": "9e8db62d-056f-47f3-b3b6-1b05767f9176", // Flemish
                 "default": "cbaf8084-f009-4838-a096-07ee2e6612b1"
             },
+            CARTESIA_PDICT: {
+                "nl-BE": "pdict_TPgLmfbAo9pQoorcetVez8" // Flemish pronunciation
+            },
             FIREBASE: {
                 apiKey: "AIzaSyC93B2GgE3HzaWl5gW_mRroobQybaZNFJs",
                 authDomain: "macx-5feca.firebaseapp.com",
@@ -1646,7 +1649,7 @@
                         body: JSON.stringify({
                             "model_id": "sonic-3-latest",
                             "transcript": transcript,
-                            "voice": { "mode": "id", "id": voiceId },
+                            "voice": { "mode": "id", "id": voiceId, ...(CREDENTIALS.CARTESIA_PDICT[lang] ? { "__experimental_pronunciation_dictionary": { "id": CREDENTIALS.CARTESIA_PDICT[lang] } } : {}) },
                             "output_format": { "container": "wav", "encoding": "pcm_f32le", "sample_rate": 44100 }
                         })
                     });
