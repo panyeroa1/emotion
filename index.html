@@ -223,108 +223,7 @@
 
     <!-- MAIN APP CONTAINER -->
     <main id="app"
-        class="relative w-full h-full max-w-lg mx-auto bg-white/50 shadow-2xl overflow-hidden md:rounded-2xl md:my-8 md:h-[calc(100vh-4rem)] md:border md:border-white/50 backdrop-blur-3xl">
-
-        <!-- ================= VIEW: LOGIN ================= -->
-        <section id="view-login" class="view-active w-full h-full flex flex-col p-8 transition-all duration-500">
-            <!-- Header/Logo -->
-            <div class="flex-1 flex flex-col items-center justify-center space-y-6 animate-slide-up">
-                <div class="relative w-28 h-28">
-                    <!-- Icon per reference (red outline style) -->
-                    <div class="relative w-full h-full flex items-center justify-center">
-                        <i class="fa-solid fa-chalkboard-user text-6xl text-red-500/80 drop-shadow-sm"></i>
-                        <div
-                            class="absolute -right-2 -top-2 bg-red-50 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-red-100">
-                            1.0</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Login Form (Student) -->
-            <div id="form-student" class="w-full space-y-5 mb-4 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1">Conversation Code</label>
-                    <div class="relative flex gap-2">
-                        <input id="login-code" type="text" placeholder="Enter conversation code"
-                            class="input-glass flex-1 px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 placeholder-gray-400 bg-gray-50/50 border-gray-200 focus:bg-white transition-all">
-                        <div
-                            class="w-12 flex items-center justify-center bg-gray-100 rounded-lg text-gray-500 text-2xl">
-                            <i class="fa-solid fa-qrcode"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1">Username</label>
-                    <input id="login-name" type="text" placeholder="Enter Username"
-                        class="input-glass w-full px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 placeholder-gray-400 bg-gray-50/50 border-gray-200 focus:bg-white">
-                </div>
-
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1">Receiving Language</label>
-                    <div class="relative">
-                        <select id="login-lang" title="Select your receiving language"
-                            class="input-glass w-full px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 appearance-none bg-gray-50/50 border-gray-200 focus:bg-white pr-10 truncate">
-                            <!-- Populated dynamically -->
-                        </select>
-                        <i
-                            class="fa-solid fa-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                    </div>
-                </div>
-
-                <button onclick="App.handleLogin()"
-                    class="btn-modern w-full bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3.5 rounded-lg shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 mt-4 text-lg">
-                    <span>Join Conversation</span>
-                </button>
-            </div>
-
-            <!-- Teacher Login Form (Hidden by default) -->
-            <div id="form-teacher" class="hidden w-full space-y-5 mb-4 animate-slide-up">
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1"
-                        for="teacher-email">Email</label>
-                    <input id="teacher-email" type="email" value="teacher@adahconnect.com" placeholder="Email"
-                        title="Teacher Email"
-                        class="input-glass w-full px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 placeholder-gray-400 bg-gray-50/50 border-gray-200 focus:bg-white">
-                </div>
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1"
-                        for="teacher-pw">Password</label>
-                    <input id="teacher-pw" type="password" value="teacher456321" placeholder="Password"
-                        title="Teacher Password"
-                        class="input-glass w-full px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 placeholder-gray-400 bg-gray-50/50 border-gray-200 focus:bg-white">
-                </div>
-                <div class="group">
-                    <label class="block text-sm font-semibold text-gray-500 mb-1.5 ml-1">Language</label>
-                    <div class="relative">
-                        <select id="teacher-lang" title="Select your instruction language"
-                            class="input-glass w-full px-4 py-3.5 rounded-lg text-base font-medium text-gray-800 appearance-none bg-gray-50/50 border-gray-200 focus:bg-white pr-10 truncate">
-                            <!-- Populated dynamically -->
-                        </select>
-                        <i
-                            class="fa-solid fa-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                    </div>
-                </div>
-
-                <button onclick="App.handleTeacherLogin()"
-                    class="btn-modern w-full bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold py-3.5 rounded-lg shadow-lg shadow-green-500/20 flex items-center justify-center gap-2 mt-4 text-lg">
-                    <span>Login & Start</span>
-                </button>
-                <button onclick="App.toggleTeacherMode(false)"
-                    class="w-full py-2 text-sm font-semibold text-gray-400 hover:text-gray-600">
-                    Cancel
-                </button>
-            </div>
-
-
-            <!-- Footer / Toggle -->
-            <div id="login-footer" class="text-center animate-slide-up mt-auto pt-4" style="animation-delay: 0.2s;">
-                <button onclick="App.toggleTeacherMode(true)"
-                    class="w-full py-3.5 rounded-lg font-semibold text-white bg-[#22c55e] hover:bg-[#16a34a] shadow-lg shadow-green-500/20 transition-all flex items-center justify-center gap-2">
-                    <span>Teacher</span>
-                </button>
-            </div>
-        </section>
+        class="relative w-full h-full max-w-lg mx-auto bg-white/50 shadow-2xl overflow-hidden md:max-w-none md:w-full md:h-full md:my-0 md:rounded-none md:border-0 backdrop-blur-3xl">
 
         <!-- ================= VIEW: TEACHER LOBBY (QR) ================= -->
         <section id="view-lobby" class="view-hidden w-full h-full flex flex-col bg-white text-center p-8">
@@ -378,10 +277,10 @@
                 </div>
                 <!-- Status & Audio Toggle -->
                 <div class="flex items-center gap-4">
-                    <button onclick="App.toggleModal('history')" title="View History"
+                    <a href="student-history.html" title="View My History"
                         class="text-gray-400 hover:text-blue-500 transition-colors">
                         <i class="fa-solid fa-clock-rotate-left"></i>
-                    </button>
+                    </a>
                     <button id="tts-btn" onclick="App.toggleTTS()" title="Toggle Voice Output"
                         class="text-gray-400 hover:text-blue-500 transition-colors">
                         <i id="tts-icon" class="fa-solid fa-volume-xmark"></i>
@@ -418,6 +317,14 @@
                             class="btn-modern w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm text-xl flex items-center justify-center hover:bg-gray-50 hover:scale-110">👍</button>
                         <button onclick="App.sendReaction('❤️')"
                             class="btn-modern w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm text-xl flex items-center justify-center hover:bg-gray-50 hover:scale-110">❤️</button>
+                        <button id="raise-hand-btn" onclick="App.sendRaiseHandRequest()" title="Raise Hand"
+                            class="btn-modern w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm text-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110">
+                            <i class="fa-solid fa-hand"></i>
+                        </button>
+                        <button id="chat-btn-student" onclick="App.openChatModal()" title="Chat"
+                            class="btn-modern w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm text-lg flex items-center justify-center hover:bg-gray-50 hover:scale-110">
+                            <i class="fa-solid fa-comment-dots"></i>
+                        </button>
                     </div>
 
                     <!-- Request Mic / Speak button (REPLACES Raise Hand) -->
@@ -454,10 +361,10 @@
 
                 <!-- Actions -->
                 <div class="flex items-center gap-4">
-                    <button onclick="App.toggleModal('history')" title="View History"
+                    <a href="history.html" title="View History"
                         class="text-gray-400 hover:text-blue-500 transition-colors">
                         <i class="fa-solid fa-clock-rotate-left"></i>
-                    </button>
+                    </a>
                     <button id="teacher-tts-btn" onclick="App.toggleTTS()" title="Toggle Voice Output"
                         class="text-gray-400 hover:text-blue-500 transition-colors">
                         <i id="teacher-tts-icon" class="fa-solid fa-volume-xmark"></i>
@@ -466,6 +373,12 @@
                     <button id="mic-btn" onclick="App.toggleMic()" title="Toggle Microphone"
                         class="btn-modern relative w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center transition-all hover:bg-gray-200">
                         <i class="fa-solid fa-microphone-slash text-sm"></i>
+                    </button>
+                    <!-- Notifications -->
+                    <button id="notif-btn" onclick="App.toggleModal('notifications')" title="Notifications"
+                        class="relative text-gray-400 hover:text-blue-500 transition-colors">
+                        <i class="fa-solid fa-bell text-lg"></i>
+                        <span id="notif-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">0</span>
                     </button>
                 </div>
             </header>
@@ -495,18 +408,34 @@
 
                 <!-- Incoming Questions / Requests / Student Speech -->
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
-                    <div class="px-4 py-3 bg-gray-50/50 border-b border-gray-100 flex justify-between items-center">
-                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Student Questions</h3>
-                        <span id="question-count"
-                            class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+                    <!-- Tab Header -->
+                    <div class="px-4 py-2 bg-gray-50/50 border-b border-gray-100 flex items-center gap-4">
+                        <button id="tab-questions-btn" onclick="App.switchTeacherTab('questions')" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 transition-colors">
+                            <i class="fa-regular fa-comments"></i>
+                            Questions
+                            <span id="question-count" class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        </button>
+                        <button id="tab-students-btn" onclick="App.switchTeacherTab('students')" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:bg-gray-100 transition-colors">
+                            <i class="fa-solid fa-users"></i>
+                            Students
+                            <span id="student-count" class="bg-gray-300 text-gray-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        </button>
                     </div>
-                    <div id="teacher-questions"
-                        class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
+                    <!-- Questions Tab Content -->
+                    <div id="tab-questions-content" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
                         <!-- Cards injected here -->
-                        <div id="teacher-empty"
-                            class="text-center py-8 opacity-40">
+                        <div id="teacher-questions"></div>
+                        <div id="teacher-empty" class="text-center py-8 opacity-40">
                             <i class="fa-regular fa-comments text-2xl mb-2 text-gray-400"></i>
                             <p class="text-xs text-gray-500">No questions yet</p>
+                        </div>
+                    </div>
+                    <!-- Students Tab Content -->
+                    <div id="tab-students-content" class="hidden flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
+                        <div id="students-list"></div>
+                        <div id="students-empty" class="text-center py-8 opacity-40">
+                            <i class="fa-solid fa-users text-2xl mb-2 text-gray-400"></i>
+                            <p class="text-xs text-gray-500">No students connected yet</p>
                         </div>
                     </div>
                 </div>
@@ -537,6 +466,36 @@
                         <button onclick="App.toggleModal('question')"
                             class="flex-1 py-3 text-sm font-bold text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>
                         <button onclick="App.sendQuestion()"
+                            class="flex-1 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-colors">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MODAL: CHAT ================= -->
+        <div id="modal-chat" class="fixed inset-0 z-50 hidden">
+            <!-- Backdrop -->
+            <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity opacity-0"
+                id="chat-backdrop" onclick="App.toggleModal('chat')"></div>
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 md:top-1/2 md:left-1/2 md:bottom-auto md:w-full md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 transition-transform transform translate-y-full"
+                id="chat-panel">
+                <div class="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Send a Chat</h3>
+                    <p class="text-sm text-gray-500 mb-6">Your message will be translated for the teacher.</p>
+
+                    <div class="relative mb-6">
+                        <input id="chat-input" type="text"
+                            class="w-full border-2 border-gray-100 rounded-xl px-4 py-3 text-base outline-none focus:border-blue-500 transition-colors"
+                            placeholder="Type your message..."
+                            onkeydown="if(event.key === 'Enter') App.sendStudentChat()">
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="App.toggleModal('chat')"
+                            class="flex-1 py-3 text-sm font-bold text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>
+                        <button onclick="App.sendStudentChat()"
                             class="flex-1 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-colors">Send</button>
                     </div>
                 </div>
@@ -578,6 +537,34 @@
             </div>
         </div>
 
+        <!-- ================= MODAL: NOTIFICATIONS ================= -->
+        <div id="modal-notifications" class="fixed inset-0 z-50 hidden">
+            <!-- Backdrop -->
+            <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity opacity-0"
+                id="notifications-backdrop" onclick="App.toggleModal('notifications')"></div>
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 md:top-1/2 md:left-1/2 md:bottom-auto md:w-full md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 transition-transform transform translate-y-full"
+                id="notifications-panel">
+                <div class="bg-white rounded-t-3xl md:rounded-3xl shadow-2xl flex flex-col max-h-[60vh]">
+                    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50 rounded-t-3xl">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-bell text-blue-500"></i>
+                            <h3 class="text-lg font-bold text-gray-900">Notifications</h3>
+                        </div>
+                        <button onclick="App.clearNotifications()" class="text-xs text-gray-400 hover:text-red-500 font-semibold">Clear All</button>
+                    </div>
+
+                    <div id="notifications-list" class="flex-1 overflow-y-auto p-3 space-y-2 custom-scrollbar">
+                        <div id="notifications-empty" class="text-center py-10 opacity-40">
+                            <i class="fa-regular fa-bell-slash text-2xl mb-2 text-gray-400"></i>
+                            <p class="text-xs text-gray-500">No notifications yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- ================= LOGIC ================= -->
@@ -591,19 +578,207 @@
             DEEPGRAM: "11ee938d032ce7c36c6fa82338274be5e4ada847",
             CARTESIA: "sk_car_yWEX9Mp2LwKju8FXyosGhj",
             CARTESIA_VOICES: {
-                "en": "cbaf8084-f009-4838-a096-07ee2e6612b1", // Cathy
-                "hi": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Riya
-                "es": "5c5ad5e7-1020-476b-8b91-fdcbe9cc313c", // Daniela
-                "de": "38aabb6a-f52b-4fb0-a3d1-988518f4dc06", // Alina
-                "ar": "002622d8-19d0-4567-a16a-f99c7397c062", // Huda
+                // Primary language voices
+                "en": "79a125e8-cd45-4c13-8a67-188112f4dd22", // British Lady
+                "es": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Spanish Narrator Lady
                 "fr": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Calm French Woman
-                "ko": "304fdbd8-65e6-40d6-ab78-f9d18b9efdf9", // Jihyun
-                "ja": "2b568345-1d48-4047-b25f-7baccf842eb0", // Yumiko
+                "de": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // German Storyteller
+                "zh-CN": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Chinese Female Narrator
+                "zh-TW": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Chinese Female (same)
+                "hi": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Riya
+                "ar": "002622d8-19d0-4567-a16a-f99c7397c062", // Huda
+                "pt-BR": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
+                "pt-PT": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
                 "pt": "700d1ee3-a641-4018-ba6e-899dcadc9e2b", // Luana
-                "ta": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Kavya
-                "te": "07bc462a-c644-49f1-baf7-82d5599131be", // Sindhu
-                "vls": "005af375-5aad-4c02-9551-7fc411430542", // West Flemish
-                "default": "cbaf8084-f009-4838-a096-07ee2e6612b1"
+                "ru": "2ee87411-6fba-4d32-9969-756368d59d7c", // Russian Female
+                "ja": "2b568345-1d48-4047-b25f-7baccf842eb0", // Yumiko
+                "ko": "304fdbd8-65e6-40d6-ab78-f9d18b9efdf9", // Jihyun
+                "vi": "fb5df5ef-91ac-4fa4-a1e4-e3c4d32e0dd8", // Vietnamese Female
+                "it": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Italian Female
+                "tr": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Turkish Female
+                "nl": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Dutch Female
+                "nl-BE": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Flemish (Dutch)
+                "pl": "69263e20-3496-4b53-a74e-e9e7c0ae9a42", // Polish Female
+                "uk": "fb26b779-5b56-4a2b-929d-e6d36ff68b76", // Ukrainian Female
+                "ro": "db832ecc-4f87-4781-a06f-c18aa9f941b8", // Romanian Female
+                "el": "359f7c60-b085-4b2e-9563-27b03bd9d7ea", // Greek Female
+                "cs": "eb7ca2ca-7e16-4608-ad79-7b7970f4a7ac", // Czech Female
+                "hu": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Hungarian Female
+                "sv": "5f994e1d-2dec-43b5-8dfd-d7e3ec43f1c8", // Swedish Female
+                "da": "a4a9b39e-0a4a-47f3-af8f-5f5ce87be8a3", // Danish Female
+                "no": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Norwegian Female
+                "fi": "726d5bd6-f1a3-4fc4-b86a-d14738c5d4fe", // Finnish Female
+                "sk": "eb7ca2ca-7e16-4608-ad79-7b7970f4a7ac", // Slovak (Czech fallback)
+                "bg": "2ee87411-6fba-4d32-9969-756368d59d7c", // Bulgarian (Russian fallback)
+                "hr": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Croatian Female
+                "sr": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Serbian (Croatian fallback)
+                "sl": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Slovenian (Croatian fallback)
+                "lt": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Lithuanian (Hungarian fallback)
+                "lv": "a0c1e9ee-a86e-4728-b77e-8fc0dc80540c", // Latvian (Hungarian fallback)
+                "et": "726d5bd6-f1a3-4fc4-b86a-d14738c5d4fe", // Estonian (Finnish fallback)
+                "is": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Icelandic (Norwegian fallback)
+                "ga": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Irish (English fallback)
+                "cy": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Welsh (English fallback)
+                "gd": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Scots Gaelic (English fallback)
+                "sq": "359f7c60-b085-4b2e-9563-27b03bd9d7ea", // Albanian (Greek fallback)
+                "mk": "2ee87411-6fba-4d32-9969-756368d59d7c", // Macedonian (Russian fallback)
+                "mt": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Maltese (Italian fallback)
+                "th": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Thai Female
+                "id": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Indonesian Female
+                "ms": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Malay (Indonesian fallback)
+                "fil": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Filipino Female
+                "pa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Punjabi (Hindi fallback)
+                "te": "07bc462a-c644-49f1-baf7-82d5599131be", // Sindhu Telugu
+                "mr": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Marathi (Hindi fallback)
+                "ta": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Kavya Tamil
+                "gu": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Gujarati (Hindi fallback)
+                "kn": "07bc462a-c644-49f1-baf7-82d5599131be", // Kannada (Telugu fallback)
+                "ml": "25d2c432-139c-4035-bfd6-9baaabcdd006", // Malayalam (Tamil fallback)
+                "bn": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Bengali (Hindi fallback)
+                "my": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Burmese (Thai fallback)
+                "km": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Khmer (Thai fallback)
+                "lo": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Lao (Thai fallback)
+                "si": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Sinhala (Hindi fallback)
+                "ne": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Nepali (Hindi fallback)
+                "sw": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Swahili Female
+                "am": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Amharic (Swahili fallback)
+                "yo": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Yoruba (Swahili fallback)
+                "ig": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Igbo (Swahili fallback)
+                "zu": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Zulu (Swahili fallback)
+                "xh": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Xhosa (Swahili fallback)
+                "af": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Afrikaans (Dutch fallback)
+                "ha": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Hausa (Swahili fallback)
+                "so": "002622d8-19d0-4567-a16a-f99c7397c062", // Somali (Arabic fallback)
+                "qu": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Quechua (Spanish fallback)
+                "ay": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Aymara (Spanish fallback)
+                "gn": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Guarani (Spanish fallback)
+                "ht": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Haitian Creole (French fallback)
+                "he": "f8913ce6-7734-4e5d-b9ec-e2fff5fc5db3", // Hebrew Female
+                "fa": "002622d8-19d0-4567-a16a-f99c7397c062", // Persian (Arabic fallback)
+                "ps": "002622d8-19d0-4567-a16a-f99c7397c062", // Pashto (Arabic fallback)
+                "ur": "002622d8-19d0-4567-a16a-f99c7397c062", // Urdu (Arabic fallback)
+                "sd": "002622d8-19d0-4567-a16a-f99c7397c062", // Sindhi (Arabic fallback)
+                "prs": "002622d8-19d0-4567-a16a-f99c7397c062", // Dari (Arabic fallback)
+                "ku": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Kurdish (Turkish fallback)
+                "ckb": "002622d8-19d0-4567-a16a-f99c7397c062", // Kurdish Sorani (Arabic fallback)
+                "kk": "2ee87411-6fba-4d32-9969-756368d59d7c", // Kazakh (Russian fallback)
+                "ky": "2ee87411-6fba-4d32-9969-756368d59d7c", // Kyrgyz (Russian fallback)
+                "uz": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Uzbek (Turkish fallback)
+                "tk": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Turkmen (Turkish fallback)
+                "tg": "2ee87411-6fba-4d32-9969-756368d59d7c", // Tajik (Russian fallback)
+                "az": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Azerbaijani (Turkish fallback)
+                "hy": "2ee87411-6fba-4d32-9969-756368d59d7c", // Armenian (Russian fallback)
+                "ka": "2ee87411-6fba-4d32-9969-756368d59d7c", // Georgian (Russian fallback)
+                "mn": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Mongolian (Chinese fallback)
+                "bo": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Tibetan (Chinese fallback)
+                "ug": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Uyghur (Chinese fallback)
+                "yue": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Cantonese (Chinese fallback)
+                "hmn": "eda5bbff-1ff1-4886-8ef1-4e69a77640a0", // Hmong (Chinese fallback)
+                "jv": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Javanese (Indonesian fallback)
+                "su": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Sundanese (Indonesian fallback)
+                "ceb": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Cebuano (Filipino fallback)
+                "ilo": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Ilocano (Filipino fallback)
+                "hil": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Hiligaynon (Filipino fallback)
+                "pam": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Kapampangan (Filipino fallback)
+                "bik": "d4f77e97-fcb7-404e-a8ba-bca3bbc5dcff", // Bikol (Filipino fallback)
+                "mi": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Maori (English fallback)
+                "haw": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Hawaiian (English fallback)
+                "sm": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Samoan (English fallback)
+                "to": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Tongan (English fallback)
+                "fj": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Fijian (English fallback)
+                "ty": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Tahitian (French fallback)
+                "mh": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Marshallese (English fallback)
+                "ch": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Chamorro (English fallback)
+                "chk": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Chuukese (English fallback)
+                "eu": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Basque (Spanish fallback)
+                "ca": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Catalan (Spanish fallback)
+                "gl": "846d6cb0-2301-48b6-9571-6d4e66dc0b47", // Galician (Spanish fallback)
+                "br": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Breton (French fallback)
+                "co": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Corsican (Italian fallback)
+                "fur": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Friulian (Italian fallback)
+                "fy": "f9836c6e-a0bd-460e-9d3c-f7299fa60f94", // Frisian (Dutch fallback)
+                "lb": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // Luxembourgish (German fallback)
+                "fo": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Faroese (Norwegian fallback)
+                "la": "c6bba59e-b30f-4be4-808f-24a8d90bea63", // Latin (Italian fallback)
+                "eo": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Esperanto (English fallback)
+                "sa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Sanskrit (Hindi fallback)
+                "yi": "3f6e78a8-5283-42aa-b5e7-af82e8bb310c", // Yiddish (German fallback)
+                "gv": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Manx (English fallback)
+                "kl": "7ac9b1b1-8c9c-4e41-ba0e-7a5bce9845de", // Kalaallisut (Norwegian fallback)
+                "iu": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Inuktut (English fallback)
+                "fr-CA": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // French Canada (French)
+                "jam": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Jamaican Patois (English fallback)
+                "kri": "79a125e8-cd45-4c13-8a67-188112f4dd22", // Krio (English fallback)
+                // African languages
+                "ee": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Ewe (Swahili fallback)
+                "ff": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Fulani (French fallback)
+                "fon": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Fon (French fallback)
+                "gaa": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Ga (Swahili fallback)
+                "bm": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Bambara (French fallback)
+                "bau": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Baoulé (French fallback)
+                "dyu": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Dyula (French fallback)
+                "ny": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Chichewa (Swahili fallback)
+                "rw": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Kinyarwanda (French fallback)
+                "rn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Rundi (Swahili fallback)
+                "lg": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Luganda (Swahili fallback)
+                "luo": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Luo (Swahili fallback)
+                "ln": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Lingala (French fallback)
+                "kg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Kikongo (French fallback)
+                "sn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Shona (Swahili fallback)
+                "nso": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Sepedi (Swahili fallback)
+                "st": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Sesotho (Swahili fallback)
+                "tn": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Tswana (Swahili fallback)
+                "ts": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Tsonga (Swahili fallback)
+                "ss": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Swati (Swahili fallback)
+                "ve": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Venda (Swahili fallback)
+                "ti": "002622d8-19d0-4567-a16a-f99c7397c062", // Tigrinya (Arabic fallback)
+                "om": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Oromo (Swahili fallback)
+                "ak": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Twi (Swahili fallback)
+                "wo": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Wolof (French fallback)
+                "kr": "002622d8-19d0-4567-a16a-f99c7397c062", // Kanuri (Arabic fallback)
+                "sg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Sango (French fallback)
+                "alu": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Alur (French fallback)
+                "ach": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Acholi (Swahili fallback)
+                "din": "002622d8-19d0-4567-a16a-f99c7397c062", // Dinka (Arabic fallback)
+                "bem": "ab820e59-b6de-49f3-b2fc-5eb830bf8f0b", // Bemba (Swahili fallback)
+                // Central Asian / Caucasus
+                "be": "2ee87411-6fba-4d32-9969-756368d59d7c", // Belarusian (Russian fallback)
+                "ab": "2ee87411-6fba-4d32-9969-756368d59d7c", // Abkhaz (Russian fallback)
+                "av": "2ee87411-6fba-4d32-9969-756368d59d7c", // Avar (Russian fallback)
+                "ba": "2ee87411-6fba-4d32-9969-756368d59d7c", // Bashkir (Russian fallback)
+                "ce": "2ee87411-6fba-4d32-9969-756368d59d7c", // Chechen (Russian fallback)
+                "cv": "2ee87411-6fba-4d32-9969-756368d59d7c", // Chuvash (Russian fallback)
+                "crh": "15d5c503-32fa-450d-bf73-ce0ef7f3c05d", // Crimean Tatar (Turkish fallback)
+                "bua": "2ee87411-6fba-4d32-9969-756368d59d7c", // Buryat (Russian fallback)
+                "tt": "2ee87411-6fba-4d32-9969-756368d59d7c", // Tatar (Russian fallback)
+                // South/Southeast Asian regional
+                "as": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Assamese (Hindi fallback)
+                "bho": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Bhojpuri (Hindi fallback)
+                "mai": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Maithili (Hindi fallback)
+                "awa": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Awadhi (Hindi fallback)
+                "doi": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Dogri (Hindi fallback)
+                "kha": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Khasi (Hindi fallback)
+                "or": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Odia (Hindi fallback)
+                "dv": "faf0731e-dfb9-4cfc-8119-259a79b27e12", // Dhivehi (Hindi fallback)
+                "dz": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Dzongkha (Thai fallback)
+                "ccp": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Hakha Chin (Thai fallback)
+                "kac": "30c14d24-db53-4e5a-93e0-6a1438b00e7f", // Jingpo (Thai fallback)
+                // Indonesian regional
+                "ace": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Acehnese (Indonesian fallback)
+                "ban": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Balinese (Indonesian fallback)
+                "iba": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Iban (Indonesian fallback)
+                "mad": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Madurese (Indonesian fallback)
+                "btk": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Karo (Indonesian fallback)
+                "bts": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Simalungun (Indonesian fallback)
+                "bbc": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Batak Toba (Indonesian fallback)
+                "btv": "5f6dcc69-cf6c-4b33-b4a5-cc33bc2c1548", // Betawi (Indonesian fallback)
+                "mg": "a8a1eb38-5f15-4c1d-8722-7ac0f329727d", // Malagasy (French fallback)
+                // Middle East
+                "bal": "002622d8-19d0-4567-a16a-f99c7397c062", // Baluchi (Arabic fallback)
+                "aa": "002622d8-19d0-4567-a16a-f99c7397c062", // Afar (Arabic fallback)
+                "bs": "726c1d8a-d8c2-4aef-a80f-6a0f2c1fc85f", // Bosnian (Croatian fallback)
+                // Default fallback
+                "default": "79a125e8-cd45-4c13-8a67-188112f4dd22"
             },
             FIREBASE: {
                 apiKey: "AIzaSyC93B2GgE3HzaWl5gW_mRroobQybaZNFJs",
@@ -617,113 +792,198 @@
         };
 
         const LANGUAGES = [
-            { code: 'en', name: 'English (United States)', flag: '🇺🇸' },
-            { code: 'es', name: 'Spanish (Español)', flag: '🇪🇸' },
-            { code: 'fr', name: 'French (Français)', flag: '🇫🇷' },
-            { code: 'de', name: 'German (Deutsch)', flag: '🇩🇪' },
-            { code: 'zh', name: 'Chinese (中文 - Mandarin)', flag: '🇨🇳' },
-            { code: 'hi', name: 'Hindi (हिन्दी)', flag: '🇮🇳' },
-            { code: 'ar', name: 'Arabic (العربية)', flag: '🇸🇦' },
-            { code: 'pt', name: 'Portuguese (Português)', flag: '🇵🇹' },
-            { code: 'bn', name: 'Bengali (বাংলা)', flag: '🇧🇩' },
-            { code: 'ru', name: 'Russian (Русский)', flag: '🇷🇺' },
-            { code: 'ja', name: 'Japanese (日本語)', flag: '🇯🇵' },
-            { code: 'ko', name: 'Korean (한국어)', flag: '🇰🇷' },
-            { code: 'vi', name: 'Vietnamese (Tiếng Việt)', flag: '🇻🇳' },
-            { code: 'it', name: 'Italian (Italiano)', flag: '🇮🇹' },
-            { code: 'tr', name: 'Turkish (Türkçe)', flag: '🇹🇷' },
-
-            // --- BENELUX (Belgium, Netherlands, Luxembourg) ---
-            { code: 'nl', name: 'Dutch (Nederlands)', flag: '🇳🇱' },
-            { code: 'nl-BE', name: 'Flemish (Vlaams)', flag: '🇧🇪' },
-            { code: 'fr-BE', name: 'Belgian French (Français de Belgique)', flag: '🇧🇪' },
-            { code: 'de-BE', name: 'Belgian German (Belgisches Deutsch)', flag: '🇧🇪' },
-            { code: 'wa', name: 'Walloon (Walon)', flag: '🇧🇪' },
-            { code: 'vls', name: 'West Flemish (West-Vlams)', flag: '🇧🇪' },
-            { code: 'li', name: 'Limburgish (Limburgs)', flag: '🇳🇱' },
-            { code: 'fy', name: 'West Frisian (Frysk)', flag: '🇳🇱' },
-            { code: 'lb', name: 'Luxembourgish (Lëtzebuergesch)', flag: '🇱🇺' },
-
-            // --- FRANCE & REGIONAL ---
-            { code: 'br', name: 'Breton (Brezhoneg)', flag: '🇫🇷' },
-            { code: 'oc', name: 'Occitan (Occitan)', flag: '🇫🇷' },
-            { code: 'co', name: 'Corsican (Corsu)', flag: '🇫🇷' },
-            { code: 'gsw-FR', name: 'Alsatian (Elsässisch)', flag: '🇫🇷' },
-            { code: 'eu', name: 'Basque (Euskara)', flag: '🇪🇸' },
-            { code: 'ca', name: 'Catalan (Català)', flag: '🇪🇸' },
-
-            // --- GERMANY & REGIONAL ---
-            { code: 'nds', name: 'Low German (Plattdeutsch)', flag: '🇩🇪' },
-            { code: 'hsb', name: 'Upper Sorbian (Hornjoserbšćina)', flag: '🇩🇪' },
-            { code: 'dsb', name: 'Lower Sorbian (Dolnoserbšćina)', flag: '🇩🇪' },
-            { code: 'bar', name: 'Bavarian (Boarisch)', flag: '🇩🇪' },
-            { code: 'swg', name: 'Swabian (Schwäबिश)', flag: '🇩🇪' },
-            { code: 'pfl', name: 'Palatine German (Pälzisch)', flag: '🇩🇪' },
-            { code: 'ksh', name: 'Colognian (Kölsch)', flag: '🇩🇪' },
-            { code: 'de-AT', name: 'Austrian German (Österreichisches Deutsch)', flag: '🇦🇹' },
-            { code: 'de-CH', name: 'Swiss German (Schwiizerdütsch)', flag: '🇨🇭' },
-
-            // --- EUROPEAN BROAD ---
-            { code: 'pl', name: 'Polish (Polski)', flag: '🇵🇱' },
-            { code: 'uk', name: 'Ukrainian (Українська)', flag: '🇺🇦' },
-            { code: 'ro', name: 'Romanian (Română)', flag: '🇷🇴' },
-            { code: 'el', name: 'Greek (Ελληνικά)', flag: '🇬🇷' },
-            { code: 'cs', name: 'Czech (Čeština)', flag: '🇨🇿' },
-            { code: 'hu', name: 'Hungarian (Magyar)', flag: '🇭🇺' },
-            { code: 'sv', name: 'Swedish (Svenska)', flag: '�🇪' },
-            { code: 'da', name: 'Danish (Dansk)', flag: '🇩🇰' },
-            { code: 'no', name: 'Norwegian (Norsk)', flag: '🇳🇴' },
-            { code: 'fi', name: 'Finnish (Suomi)', flag: '�🇫�' },
-            { code: 'sk', name: 'Slovak (Slovenčina)', flag: '🇸🇰' },
-            { code: 'bg', name: 'Bulgarian (Български)', flag: '🇧🇬' },
-            { code: 'hr', name: 'Croatian (Hrvatski)', flag: '🇭�🇷' },
-            { code: 'sr', name: 'Serbian (Српски)', flag: '🇷🇸' },
-            { code: 'sl', name: 'Slovenian (Slovenščina)', flag: '🇸🇮' },
-            { code: 'lt', name: 'Lithuanian (Lietuvių)', flag: '🇱🇹' },
-            { code: 'lv', name: 'Latvian (Latviešu)', flag: '🇱🇻' },
-            { code: 'et', name: 'Estonian (Eesti)', flag: '🇪🇪' },
-            { code: 'is', name: 'Icelandic (Íسلenska)', flag: '🇮🇸' },
-            { code: 'ga', name: 'Irish (Gaeilge)', flag: '🇮🇪' },
-            { code: 'cy', name: 'Welsh (Cymraeg)', flag: '🇬🇧' },
-            { code: 'gd', name: 'Scottish Gaelic (Gàidhlig)', flag: '🏴' },
-            { code: 'sq', name: 'Albanian (Shqip)', flag: '🇦🇱' },
-            { code: 'mk', name: 'Macedonian (Македонски)', flag: '🇲🇰' },
-            { code: 'mt', name: 'Maltese (Malti)', flag: '🇲🇹' },
-
-            // --- ASIA & PACIFIC ---
-            { code: 'th', name: 'Thai (ไทย)', flag: '🇹🇭' },
-            { code: 'id', name: 'Indonesian (Bahasa Indonesia)', flag: '🇮🇩' },
-            { code: 'ms', name: 'Malay (Bahasa Melayu)', flag: '🇲🇾' },
-            { code: 'tl', name: 'Tagalog (Filipino)', flag: '🇵🇭' },
-            { code: 'pa', name: 'Punjabi (ਪੰਜਾਬੀ)', flag: '🇮🇳' },
-            { code: 'te', name: 'Telugu (తెలుగు)', flag: '🇮🇳' },
-            { code: 'mr', name: 'Marathi (मराठी)', flag: '🇮🇳' },
-            { code: 'ta', name: 'Tamil (தமிழ்)', flag: '🇮🇳' },
-            { code: 'gu', name: 'Gujarati (ગુજરાતી)', flag: '🇮🇳' },
-            { code: 'kn', name: 'Kannada (ಕನ್ನಡ)', flag: '🇮🇳' },
-            { code: 'ml', name: 'Malayalam (മലയാളം)', flag: '🇮🇳' },
-            { code: 'my', name: 'Burmese (မြန်မာစာ)', flag: '🇲🇲' },
-            { code: 'km', name: 'Khmer (ខ្មែរ)', flag: '🇰🇭' },
-            { code: 'lo', name: 'Lao (ລາວ)', flag: '🇱🇦' },
-            { code: 'si', name: 'Sinhala (සිංහල)', flag: '🇱🇰' },
-            { code: 'ne', name: 'Nepali (नेपाली)', flag: '🇳🇵' },
-
-            // --- AFRICA ---
-            { code: 'sw', name: 'Swahili (Kiswahili)', flag: '🇹🇿' },
-            { code: 'am', name: 'Amharic (አማርኛ)', flag: '🇪🇹' },
-            { code: 'yo', name: 'Yoruba (Yorùbá)', flag: '🇳🇬' },
-            { code: 'ig', name: 'Igbo (Asụsụ Igbo)', flag: '🇳🇬' },
-            { code: 'zu', name: 'Zulu (isiZulu)', flag: '🇿🇦' },
-            { code: 'xh', name: 'Xhosa (isiXhosa)', flag: '🇿🇦' },
+            { code: 'nl-BE', name: 'Flemish', flag: '🇧🇪' },
+            { code: 'ab', name: 'Abkhaz', flag: '🇬🇪' },
+            { code: 'ace', name: 'Acehnese', flag: '🇮🇩' },
+            { code: 'ach', name: 'Acholi', flag: '🇺🇬' },
+            { code: 'aa', name: 'Afar', flag: '🇪🇹' },
             { code: 'af', name: 'Afrikaans', flag: '🇿🇦' },
-            { code: 'ha', name: 'Hausa (هَوْسَ)', flag: '🇳🇬' },
-            { code: 'so', name: 'Somali (Soomaali)', flag: '🇸🇴' },
-
-            // --- AMERICAS ---
-            { code: 'qu', name: 'Quechua (Runa Simi)', flag: '🇵🇪' },
+            { code: 'sq', name: 'Albanian', flag: '🇦🇱' },
+            { code: 'alu', name: 'Alur', flag: '🇨🇬' },
+            { code: 'am', name: 'Amharic', flag: '🇪🇹' },
+            { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
+            { code: 'hy', name: 'Armenian', flag: '🇦🇲' },
+            { code: 'as', name: 'Assamese', flag: '🇮🇳' },
+            { code: 'av', name: 'Avar', flag: '🇷🇺' },
+            { code: 'awa', name: 'Awadhi', flag: '🇮🇳' },
             { code: 'ay', name: 'Aymara', flag: '🇧🇴' },
-            { code: 'gn', name: 'Guarani (Avañe\'ẽ)', flag: '🇵🇾' },
-            { code: 'ht', name: 'Haitian Creole (Kreyòl ayisyen)', flag: '🇭🇹' }
+            { code: 'az', name: 'Azerbaijani', flag: '🇦🇿' },
+            { code: 'ban', name: 'Balinese', flag: '🇮🇩' },
+            { code: 'bal', name: 'Baluchi', flag: '🇵🇰' },
+            { code: 'bm', name: 'Bambara', flag: '🇲🇱' },
+            { code: 'bau', name: 'Baoulé', flag: '🇨🇮' },
+            { code: 'ba', name: 'Bashkir', flag: '🇷🇺' },
+            { code: 'eu', name: 'Basque', flag: '🇪🇸' },
+            { code: 'btk', name: 'Batak Karo', flag: '🇮🇩' },
+            { code: 'bts', name: 'Batak Simalungun', flag: '🇮🇩' },
+            { code: 'bbc', name: 'Batak Toba', flag: '🇮🇩' },
+            { code: 'be', name: 'Belarusian', flag: '🇧🇾' },
+            { code: 'bem', name: 'Bemba', flag: '🇿🇲' },
+            { code: 'bn', name: 'Bengali', flag: '🇧🇩' },
+            { code: 'btv', name: 'Betawi', flag: '🇮🇩' },
+            { code: 'bho', name: 'Bhojpuri', flag: '🇮🇳' },
+            { code: 'bik', name: 'Bikol', flag: '🇵🇭' },
+            { code: 'bs', name: 'Bosnian', flag: '🇧🇦' },
+            { code: 'br', name: 'Breton', flag: '🇫🇷' },
+            { code: 'bg', name: 'Bulgarian', flag: '🇧🇬' },
+            { code: 'bua', name: 'Buryat', flag: '🇷🇺' },
+            { code: 'yue', name: 'Cantonese', flag: '🇭🇰' },
+            { code: 'ca', name: 'Catalan', flag: '🇪🇸' },
+            { code: 'ceb', name: 'Cebuano', flag: '🇵🇭' },
+            { code: 'ch', name: 'Chamorro', flag: '🇬🇺' },
+            { code: 'ce', name: 'Chechen', flag: '🇷🇺' },
+            { code: 'ny', name: 'Chichewa', flag: '🇲🇼' },
+            { code: 'zh-CN', name: 'Chinese (Simplified)', flag: '🇨🇳' },
+            { code: 'zh-TW', name: 'Chinese (Traditional)', flag: '🇹🇼' },
+            { code: 'chk', name: 'Chuukese', flag: '🇫🇲' },
+            { code: 'cv', name: 'Chuvash', flag: '🇷🇺' },
+            { code: 'co', name: 'Corsican', flag: '🇫🇷' },
+            { code: 'crh', name: 'Crimean Tatar (Latin)', flag: '🇺🇦' },
+            { code: 'hr', name: 'Croatian', flag: '🇭🇷' },
+            { code: 'cs', name: 'Czech', flag: '🇨🇿' },
+            { code: 'da', name: 'Danish', flag: '🇩🇰' },
+            { code: 'prs', name: 'Dari', flag: '🇦🇫' },
+            { code: 'dv', name: 'Dhivehi', flag: '🇲🇻' },
+            { code: 'din', name: 'Dinka', flag: '🇸🇸' },
+            { code: 'doi', name: 'Dogri', flag: '🇮🇳' },
+            { code: 'nl', name: 'Dutch', flag: '🇳🇱' },
+            { code: 'dyu', name: 'Dyula', flag: '🇨🇮' },
+            { code: 'dz', name: 'Dzongkha', flag: '🇧🇹' },
+            { code: 'en', name: 'English', flag: '🇺🇸' },
+            { code: 'eo', name: 'Esperanto', flag: '🌍' },
+            { code: 'et', name: 'Estonian', flag: '🇪🇪' },
+            { code: 'ee', name: 'Ewe', flag: '🇬🇭' },
+            { code: 'fo', name: 'Faroese', flag: '🇫🇴' },
+            { code: 'fj', name: 'Fijian', flag: '🇫🇯' },
+            { code: 'fil', name: 'Filipino', flag: '🇵🇭' },
+            { code: 'fi', name: 'Finnish', flag: '🇫🇮' },
+            { code: 'fon', name: 'Fon', flag: '🇧🇯' },
+            { code: 'fr', name: 'French', flag: '🇫🇷' },
+            { code: 'fr-CA', name: 'French (Canada)', flag: '🇨🇦' },
+            { code: 'fy', name: 'Frisian', flag: '🇳🇱' },
+            { code: 'fur', name: 'Friulian', flag: '🇮🇹' },
+            { code: 'ff', name: 'Fulani', flag: '🇸🇳' },
+            { code: 'gaa', name: 'Ga', flag: '🇬🇭' },
+            { code: 'gl', name: 'Galician', flag: '🇪🇸' },
+            { code: 'ka', name: 'Georgian', flag: '🇬🇪' },
+            { code: 'de', name: 'German', flag: '🇩🇪' },
+            { code: 'el', name: 'Greek', flag: '🇬🇷' },
+            { code: 'gn', name: 'Guarani', flag: '🇵🇾' },
+            { code: 'gu', name: 'Gujarati', flag: '🇮🇳' },
+            { code: 'ht', name: 'Haitian Creole', flag: '🇭🇹' },
+            { code: 'ccp', name: 'Hakha Chin', flag: '🇲🇲' },
+            { code: 'ha', name: 'Hausa', flag: '🇳🇬' },
+            { code: 'haw', name: 'Hawaiian', flag: '🇺🇸' },
+            { code: 'he', name: 'Hebrew', flag: '🇮🇱' },
+            { code: 'hil', name: 'Hiligaynon', flag: '🇵🇭' },
+            { code: 'hi', name: 'Hindi', flag: '🇮🇳' },
+            { code: 'hmn', name: 'Hmong', flag: '🇨🇳' },
+            { code: 'hu', name: 'Hungarian', flag: '🇭🇺' },
+            { code: 'iba', name: 'Iban', flag: '🇲🇾' },
+            { code: 'is', name: 'Icelandic', flag: '🇮🇸' },
+            { code: 'ig', name: 'Igbo', flag: '🇳🇬' },
+            { code: 'ilo', name: 'Ilocano', flag: '🇵🇭' },
+            { code: 'id', name: 'Indonesian', flag: '🇮🇩' },
+            { code: 'iu', name: 'Inuktut', flag: '🇨🇦' },
+            { code: 'ga', name: 'Irish', flag: '🇮🇪' },
+            { code: 'it', name: 'Italian', flag: '🇮🇹' },
+            { code: 'jam', name: 'Jamaican Patois', flag: '🇯🇲' },
+            { code: 'ja', name: 'Japanese', flag: '🇯🇵' },
+            { code: 'jv', name: 'Javanese', flag: '🇮🇩' },
+            { code: 'kac', name: 'Jingpo', flag: '🇲🇲' },
+            { code: 'kl', name: 'Kalaallisut', flag: '🇬🇱' },
+            { code: 'kn', name: 'Kannada', flag: '🇮🇳' },
+            { code: 'kr', name: 'Kanuri', flag: '🇳🇬' },
+            { code: 'pam', name: 'Kapampangan', flag: '🇵🇭' },
+            { code: 'kk', name: 'Kazakh', flag: '🇰🇿' },
+            { code: 'kha', name: 'Khasi', flag: '🇮🇳' },
+            { code: 'km', name: 'Khmer', flag: '🇰🇭' },
+            { code: 'kg', name: 'Kikongo', flag: '🇨🇬' },
+            { code: 'rw', name: 'Kinyarwanda', flag: '🇷🇼' },
+            { code: 'ko', name: 'Korean', flag: '🇰🇷' },
+            { code: 'kri', name: 'Krio', flag: '🇸🇱' },
+            { code: 'ku', name: 'Kurdish (Kurmanji)', flag: '🇹🇷' },
+            { code: 'ckb', name: 'Kurdish (Sorani)', flag: '🇮🇶' },
+            { code: 'ky', name: 'Kyrgyz', flag: '🇰🇬' },
+            { code: 'lo', name: 'Lao', flag: '🇱🇦' },
+            { code: 'la', name: 'Latin', flag: '🇻🇦' },
+            { code: 'lv', name: 'Latvian', flag: '🇱🇻' },
+            { code: 'ln', name: 'Lingala', flag: '🇨🇩' },
+            { code: 'lt', name: 'Lithuanian', flag: '🇱🇹' },
+            { code: 'lg', name: 'Luganda', flag: '🇺🇬' },
+            { code: 'luo', name: 'Luo', flag: '🇰🇪' },
+            { code: 'lb', name: 'Luxembourgish', flag: '🇱🇺' },
+            { code: 'mk', name: 'Macedonian', flag: '🇲🇰' },
+            { code: 'mad', name: 'Madurese', flag: '🇮🇩' },
+            { code: 'mai', name: 'Maithili', flag: '🇮🇳' },
+            { code: 'mg', name: 'Malagasy', flag: '🇲🇬' },
+            { code: 'ms', name: 'Malay', flag: '🇲🇾' },
+            { code: 'ml', name: 'Malayalam', flag: '🇮🇳' },
+            { code: 'mt', name: 'Maltese', flag: '🇲🇹' },
+            { code: 'gv', name: 'Manx', flag: '🇮🇲' },
+            { code: 'mi', name: 'Maori', flag: '🇳🇿' },
+            { code: 'mr', name: 'Marathi', flag: '🇮🇳' },
+            { code: 'mh', name: 'Marshallese', flag: '🇲🇭' },
+            { code: 'mn', name: 'Mongolian', flag: '🇲🇳' },
+            { code: 'my', name: 'Myanmar (Burmese)', flag: '🇲🇲' },
+            { code: 'ne', name: 'Nepali', flag: '🇳🇵' },
+            { code: 'no', name: 'Norwegian', flag: '🇳🇴' },
+            { code: 'or', name: 'Odia (Oriya)', flag: '🇮🇳' },
+            { code: 'om', name: 'Oromo', flag: '🇪🇹' },
+            { code: 'ps', name: 'Pashto', flag: '🇦🇫' },
+            { code: 'fa', name: 'Persian', flag: '🇮🇷' },
+            { code: 'pl', name: 'Polish', flag: '🇵🇱' },
+            { code: 'pt-BR', name: 'Portuguese (Brazil)', flag: '🇧🇷' },
+            { code: 'pt-PT', name: 'Portuguese (Portugal)', flag: '🇵🇹' },
+            { code: 'pa', name: 'Punjabi', flag: '🇮🇳' },
+            { code: 'qu', name: 'Quechua', flag: '🇵🇪' },
+            { code: 'ro', name: 'Romanian', flag: '🇷🇴' },
+            { code: 'rn', name: 'Rundi', flag: '🇧🇮' },
+            { code: 'ru', name: 'Russian', flag: '🇷🇺' },
+            { code: 'sm', name: 'Samoan', flag: '🇼🇸' },
+            { code: 'sg', name: 'Sango', flag: '🇨🇫' },
+            { code: 'sa', name: 'Sanskrit', flag: '🇮🇳' },
+            { code: 'gd', name: 'Scots Gaelic', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿' },
+            { code: 'nso', name: 'Sepedi', flag: '🇿🇦' },
+            { code: 'sr', name: 'Serbian', flag: '🇷🇸' },
+            { code: 'st', name: 'Sesotho', flag: '🇿🇦' },
+            { code: 'sn', name: 'Shona', flag: '🇿🇼' },
+            { code: 'sd', name: 'Sindhi', flag: '🇵🇰' },
+            { code: 'si', name: 'Sinhala', flag: '🇱🇰' },
+            { code: 'sk', name: 'Slovak', flag: '🇸🇰' },
+            { code: 'sl', name: 'Slovenian', flag: '🇸🇮' },
+            { code: 'so', name: 'Somali', flag: '🇸🇴' },
+            { code: 'es', name: 'Spanish', flag: '🇪🇸' },
+            { code: 'su', name: 'Sundanese', flag: '🇮🇩' },
+            { code: 'sw', name: 'Swahili', flag: '🇰🇪' },
+            { code: 'ss', name: 'Swati', flag: '🇸🇿' },
+            { code: 'sv', name: 'Swedish', flag: '🇸🇪' },
+            { code: 'ty', name: 'Tahitian', flag: '🇵🇫' },
+            { code: 'tg', name: 'Tajik', flag: '🇹🇯' },
+            { code: 'ta', name: 'Tamil', flag: '🇮🇳' },
+            { code: 'tt', name: 'Tatar', flag: '🇷🇺' },
+            { code: 'te', name: 'Telugu', flag: '🇮🇳' },
+            { code: 'th', name: 'Thai', flag: '🇹🇭' },
+            { code: 'bo', name: 'Tibetan', flag: '🇨🇳' },
+            { code: 'ti', name: 'Tigrinya', flag: '🇪🇷' },
+            { code: 'to', name: 'Tongan', flag: '🇹🇴' },
+            { code: 'ts', name: 'Tsonga', flag: '🇿🇦' },
+            { code: 'tn', name: 'Tswana', flag: '🇿🇦' },
+            { code: 'tr', name: 'Turkish', flag: '🇹🇷' },
+            { code: 'tk', name: 'Turkmen', flag: '🇹🇲' },
+            { code: 'ak', name: 'Twi', flag: '🇬🇭' },
+            { code: 'uk', name: 'Ukrainian', flag: '🇺🇦' },
+            { code: 'ur', name: 'Urdu', flag: '🇵🇰' },
+            { code: 'ug', name: 'Uyghur', flag: '🇨🇳' },
+            { code: 'uz', name: 'Uzbek', flag: '🇺🇿' },
+            { code: 've', name: 'Venda', flag: '🇿🇦' },
+            { code: 'vi', name: 'Vietnamese', flag: '🇻🇳' },
+            { code: 'cy', name: 'Welsh', flag: '🏴󠁧󠁢󠁷󠁬󠁳󠁿' },
+            { code: 'wo', name: 'Wolof', flag: '🇸🇳' },
+            { code: 'xh', name: 'Xhosa', flag: '🇿🇦' },
+            { code: 'yi', name: 'Yiddish', flag: '🇮🇱' },
+            { code: 'yo', name: 'Yoruba', flag: '🇳🇬' },
+            { code: 'zu', name: 'Zulu', flag: '🇿🇦' }
         ];
 
         class SuccesApp {
@@ -755,6 +1015,8 @@
                     approved: false,
                     recording: false,
                     approvalKey: null,
+                    chatRequestPending: false,
+                    chatApproved: false,
 
                     dgClient: null,
                     dgSocket: null,
@@ -785,9 +1047,6 @@
 
             bindAll() {
                 [
-                    'handleLogin',
-                    'handleTeacherLogin',
-                    'toggleTeacherMode',
                     'startSession',
                     'logout',
                     'toggleMic',
@@ -796,38 +1055,53 @@
                     'sendReaction',
                     'toggleTTS',
                     'handleStudentMicAction',
-                    'approveMicRequest'
+                    'approveMicRequest',
+                    'sendRaiseHandRequest',
+                    'openChatModal',
+                    'sendStudentChat',
+                    'approveChatRequest',
+                    'switchTeacherTab',
+                    'clearNotifications'
                 ].forEach(m => this[m] = this[m].bind(this));
             }
 
             init() {
-                // Populate both language selects
-                const ops = LANGUAGES.map(l => `<option value="${l.code}" ${l.code === 'en' ? 'selected' : ''}>${l.flag || ''} ${l.name}</option>`).join('');
-                document.getElementById('login-lang').innerHTML = ops;
-                document.getElementById('teacher-lang').innerHTML = ops;
                 window.App = this;
 
-                // Restore Session
+                // Check for session - redirect to auth.html if not logged in
                 const saved = localStorage.getItem('orbit_session');
-                if (saved) {
-                    try {
-                        const data = JSON.parse(saved);
-                        this.state = { ...this.state, ...data };
-
-                        if (this.state.role === 'student' && this.state.room) {
-                            this.initStudent();
-                            this.switchView(this.state.currentView || 'view-student');
-                        } else if (this.state.role === 'teacher' && this.state.room) {
-                            if (this.state.currentView === 'view-teacher') {
-                                this.initTeacher();
-                                this.switchView('view-teacher');
-                            } else {
-                                document.getElementById('lobby-code').innerText = this.state.room;
-                                this.switchView('view-lobby');
-                            }
-                        }
-                    } catch (e) { this.clearState(); }
+                if (!saved) {
+                    window.location.href = 'auth.html';
+                    return;
                 }
+
+                try {
+                    const data = JSON.parse(saved);
+                    if (!data.role || !data.room) {
+                        window.location.href = 'auth.html';
+                        return;
+                    }
+
+                    this.state = { ...this.state, ...data };
+
+                    if (this.state.role === 'student' && this.state.room) {
+                        this.initStudent();
+                        this.switchView(this.state.currentView || 'view-student');
+                    } else if (this.state.role === 'teacher' && this.state.room) {
+                        if (this.state.currentView === 'view-teacher') {
+                            this.initTeacher();
+                            this.switchView('view-teacher');
+                        } else {
+                            document.getElementById('lobby-code').innerText = this.state.room;
+                            this.switchView('view-lobby');
+                        }
+                    }
+                } catch (e) {
+                    this.clearState();
+                    window.location.href = 'auth.html';
+                    return;
+                }
+
                 this.registerServiceWorker();
             }
 
@@ -878,8 +1152,10 @@
 
             toggleModal(type) {
                 const modal = document.getElementById(`modal-${type}`);
-                const bd = document.getElementById(type === 'history' ? 'history-backdrop' : 'modal-backdrop');
-                const panel = document.getElementById(type === 'history' ? 'history-panel' : 'modal-panel');
+                const bdId = type === 'history' ? 'history-backdrop' : (type === 'chat' ? 'chat-backdrop' : (type === 'notifications' ? 'notifications-backdrop' : 'modal-backdrop'));
+                const panelId = type === 'history' ? 'history-panel' : (type === 'chat' ? 'chat-panel' : (type === 'notifications' ? 'notifications-panel' : 'modal-panel'));
+                const bd = document.getElementById(bdId);
+                const panel = document.getElementById(panelId);
 
                 if (!modal || !bd || !panel) return;
 
@@ -989,60 +1265,6 @@
                 }, 3000);
             }
 
-            // --- AUTH ---
-            toggleTeacherMode(show) {
-                const sForm = document.getElementById('form-student');
-                const tForm = document.getElementById('form-teacher');
-                const footer = document.getElementById('login-footer');
-
-                if (show) {
-                    sForm.classList.add('hidden');
-                    footer.classList.add('hidden');
-                    tForm.classList.remove('hidden');
-                } else {
-                    tForm.classList.add('hidden');
-                    sForm.classList.remove('hidden');
-                    footer.classList.remove('hidden');
-                }
-            }
-
-            handleLogin() { // Student
-                const code = document.getElementById('login-code').value.toUpperCase();
-                const name = document.getElementById('login-name').value;
-                if (!code || !name) return this.showToast("Please enter room and name", "error");
-
-                this.state = {
-                    ...this.state,
-                    role: 'student',
-                    room: code,
-                    name: name,
-                    lang: document.getElementById('login-lang').value
-                };
-
-                this.requestPermissions();
-                this.initStudent();
-                this.switchView('view-student');
-            }
-
-            handleTeacherLogin() {
-                const email = document.getElementById('teacher-email').value;
-                const pw = document.getElementById('teacher-pw').value;
-                const lang = document.getElementById('teacher-lang').value;
-
-                if (email === "teacher@adahconnect.com" && pw === "teacher456321") {
-                    // Generate Room Code
-                    const roomCode = "RM" + Math.floor(1000 + Math.random() * 9000);
-                    this.state = { ...this.state, role: 'teacher', room: roomCode, name: 'Teacher', lang };
-
-                    this.requestPermissions();
-                    document.getElementById('lobby-code').innerText = roomCode;
-                    this.switchView('view-lobby');
-                    this.showToast("Logged in successfully", "success");
-                } else {
-                    this.showToast("Invalid Credentials", "error");
-                }
-            }
-
             startSession() {
                 this.initTeacher();
                 this.switchView('view-teacher');
@@ -1068,11 +1290,11 @@
                 this.student.approved = false;
                 this.student.recording = false;
                 this.student.approvalKey = null;
-                this.updateStudentMicButton();
+                this.student.chatRequestPending = false;
+                this.student.chatApproved = false;
 
-                // Reset Forms
-                this.toggleTeacherMode(false);
-                this.switchView('view-login');
+                // Redirect to auth page
+                window.location.href = 'auth.html';
             }
 
             // --- STUDENT MIC BUTTON UI ---
@@ -1126,6 +1348,35 @@
                 label.textContent = "Request Mic";
             }
 
+            updateChatControls() {
+                const raiseBtn = document.getElementById('raise-hand-btn');
+                const chatBtn = document.getElementById('chat-btn-student');
+                if (!raiseBtn || !chatBtn) return;
+
+                raiseBtn.disabled = false;
+                chatBtn.disabled = false;
+                raiseBtn.classList.remove('bg-amber-500', 'hover:bg-amber-600', 'opacity-70', 'cursor-not-allowed');
+                chatBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'text-white', 'opacity-60', 'cursor-not-allowed');
+
+                if (this.state.role !== 'student') {
+                    chatBtn.disabled = true;
+                    chatBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                    return;
+                }
+
+                if (this.student.chatApproved) {
+                    chatBtn.classList.add('bg-blue-500', 'hover:bg-blue-600', 'text-white');
+                } else {
+                    chatBtn.disabled = true;
+                    chatBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                }
+
+                if (this.student.chatRequestPending) {
+                    raiseBtn.disabled = true;
+                    raiseBtn.classList.add('bg-amber-500', 'hover:bg-amber-600', 'opacity-70', 'cursor-not-allowed');
+                }
+            }
+
             // --- STUDENT MIC FLOW ---
             async handleStudentMicAction() {
                 if (this.state.role !== 'student' || !this.state.room) return;
@@ -1167,6 +1418,30 @@
                 }
             }
 
+            async sendRaiseHandRequest() {
+                if (this.state.role !== 'student' || !this.state.room) return;
+                if (this.student.chatApproved) return this.showToast("Chat already approved", "info");
+                if (this.student.chatRequestPending) return;
+
+                try {
+                    this.student.chatRequestPending = true;
+                    this.updateChatControls();
+
+                    await push(ref(this.db, `chats/${this.state.room}/handRaises`), {
+                        senderName: this.state.name,
+                        senderId: this.state.name,
+                        lang: this.state.lang,
+                        timestamp: Date.now()
+                    });
+
+                    this.showToast("Hand raised", "success");
+                } catch (e) {
+                    this.student.chatRequestPending = false;
+                    this.updateChatControls();
+                    this.showToast("Failed to raise hand: " + e.message, "error");
+                }
+            }
+
             listenForStudentApproval() {
                 const aRef = ref(this.db, `chats/${this.state.room}/approvedSpeakers`);
                 onChildAdded(aRef, async (snap) => {
@@ -1190,6 +1465,69 @@
                         await this.startStudentCapture();
                     }
                 });
+            }
+
+            listenForChatApproval() {
+                const aRef = ref(this.db, `chats/${this.state.room}/approvedChat`);
+                onChildAdded(aRef, async (snap) => {
+                    if (this.state.role !== 'student') return;
+                    const a = snap.val();
+                    if (!a) return;
+
+                    const speaker = a.speakerName || a.name || '';
+                    if (speaker && speaker === this.state.name) {
+                        this.student.chatApproved = true;
+                        this.student.chatRequestPending = false;
+                        this.updateChatControls();
+                        this.showToast("Chat approved", "success");
+
+                        try { await remove(ref(this.db, `chats/${this.state.room}/approvedChat/${snap.key}`)); } catch (_) { }
+                    }
+                });
+            }
+
+            openChatModal() {
+                if (this.state.role !== 'student') return;
+                if (!this.student.chatApproved) {
+                    this.showToast("Raise your hand to chat", "info");
+                    return;
+                }
+                this.toggleModal('chat');
+            }
+
+            async sendStudentChat() {
+                const val = document.getElementById('chat-input')?.value?.trim();
+                if (!val) return;
+                if (!this.student.chatApproved) return this.showToast("Chat not approved yet", "error");
+
+                try {
+                    let teacherLang = null;
+                    try {
+                        const metaSnap = await get(ref(this.db, `chats/${this.state.room}/meta`));
+                        if (metaSnap.exists()) teacherLang = metaSnap.val()?.teacherLang || null;
+                    } catch (_) { }
+
+                    let textForTeacher = null;
+                    if (teacherLang) {
+                        textForTeacher = await this.translateText(val, this.state.lang, teacherLang);
+                    }
+
+                    await push(ref(this.db, `chats/${this.state.room}/studentChats`), {
+                        senderName: this.state.name,
+                        senderId: this.state.name,
+                        lang: this.state.lang,
+                        text: val,
+                        teacherLang: teacherLang || null,
+                        textForTeacher: textForTeacher || null,
+                        timestamp: Date.now()
+                    });
+
+                    document.getElementById('chat-input').value = '';
+                    this.toggleModal('chat');
+                    this.showToast("Chat sent", "success");
+                } catch (e) {
+                    this.showToast("Failed to send chat: " + e.message, "error");
+                }
             }
 
             async startStudentCapture() {
@@ -1385,7 +1723,12 @@
                 badge.innerText = this.state.lang.toUpperCase();
 
                 this.updateStudentMicButton();
+                this.updateChatControls();
                 this.listenForStudentApproval();
+                this.listenForChatApproval();
+
+                // Register student in room
+                this.registerStudent();
 
                 const msgsRef = ref(this.db, `chats/${this.state.room}/messages`);
                 onChildAdded(msgsRef, async (snap) => {
@@ -1436,6 +1779,22 @@
                     this.showToast("Voice Output Enabled", "success");
                 } else {
                     this.showToast("Voice Output Muted", "info");
+                }
+            }
+
+            async registerStudent() {
+                if (this.state.role !== 'student' || !this.state.room) return;
+                try {
+                    const langInfo = LANGUAGES.find(l => l.code === this.state.lang);
+                    const langName = langInfo ? langInfo.name : this.state.lang.toUpperCase();
+                    await set(ref(this.db, `chats/${this.state.room}/students/${this.state.name}`), {
+                        name: this.state.name,
+                        lang: this.state.lang,
+                        langName: langName,
+                        joinedAt: Date.now()
+                    });
+                } catch (e) {
+                    console.error('Failed to register student:', e);
                 }
             }
 
@@ -1564,6 +1923,25 @@
                     this.showToast(`Mic request: ${req.senderName}`, "info");
                 });
 
+                // Hand Raise (Chat) Listener
+                const hRef = ref(this.db, `chats/${this.state.room}/handRaises`);
+                onChildAdded(hRef, async (snap) => {
+                    if (this.state.role !== 'teacher') return;
+                    const req = snap.val();
+                    if (!req) return;
+
+                    this.renderHandRaiseCard(snap.key, req);
+                    this.incrementQuestionCount();
+
+                    if ('Notification' in window && Notification.permission === 'granted') {
+                        try {
+                            new Notification("Hand Raise", { body: `${req.senderName} requests to chat.` });
+                        } catch (_) { }
+                    }
+
+                    this.showToast(`Hand raise: ${req.senderName}`, "info");
+                });
+
                 // Student Responses Listener
                 const sRef = ref(this.db, `chats/${this.state.room}/studentResponses`);
                 onChildAdded(sRef, async (snap) => {
@@ -1589,6 +1967,167 @@
                         this.queueAudio(teacherText, 'Female');
                     }
                 });
+
+                // Student Chat Listener
+                const cRef = ref(this.db, `chats/${this.state.room}/studentChats`);
+                onChildAdded(cRef, async (snap) => {
+                    if (this.state.role !== 'teacher') return;
+                    const resp = snap.val();
+                    if (!resp) return;
+
+                    const teacherText = resp.textForTeacher
+                        ? resp.textForTeacher
+                        : await this.translateText(resp.text, resp.lang, this.state.lang);
+
+                    this.renderStudentChatCard({
+                        sender: resp.senderName,
+                        text: teacherText,
+                        original: resp.text
+                    });
+
+                    this.incrementQuestionCount();
+
+                    if (this.state.isTTSActive) {
+                        this.queueAudio(teacherText, 'Female');
+                    }
+                });
+
+                // Students List Listener
+                const studentsRef = ref(this.db, `chats/${this.state.room}/students`);
+                onChildAdded(studentsRef, (snap) => {
+                    if (this.state.role !== 'teacher') return;
+                    const student = snap.val();
+                    if (!student) return;
+                    this.renderStudentListItem(student);
+                    this.updateStudentCount();
+                });
+
+                // Reactions Listener (for notifications)
+                const reactionsRef = ref(this.db, `chats/${this.state.room}/reactions`);
+                onChildAdded(reactionsRef, (snap) => {
+                    if (this.state.role !== 'teacher') return;
+                    const reaction = snap.val();
+                    if (!reaction) return;
+                    this.addNotification(reaction.emoji, reaction.senderName, reaction.timestamp);
+                });
+            }
+
+            switchTeacherTab(tab) {
+                const questionsBtn = document.getElementById('tab-questions-btn');
+                const studentsBtn = document.getElementById('tab-students-btn');
+                const questionsContent = document.getElementById('tab-questions-content');
+                const studentsContent = document.getElementById('tab-students-content');
+
+                if (!questionsBtn || !studentsBtn || !questionsContent || !studentsContent) return;
+
+                if (tab === 'questions') {
+                    questionsBtn.classList.add('bg-blue-100', 'text-blue-700');
+                    questionsBtn.classList.remove('text-gray-500', 'hover:bg-gray-100');
+                    studentsBtn.classList.remove('bg-blue-100', 'text-blue-700');
+                    studentsBtn.classList.add('text-gray-500', 'hover:bg-gray-100');
+                    questionsContent.classList.remove('hidden');
+                    studentsContent.classList.add('hidden');
+                } else {
+                    studentsBtn.classList.add('bg-blue-100', 'text-blue-700');
+                    studentsBtn.classList.remove('text-gray-500', 'hover:bg-gray-100');
+                    questionsBtn.classList.remove('bg-blue-100', 'text-blue-700');
+                    questionsBtn.classList.add('text-gray-500', 'hover:bg-gray-100');
+                    studentsContent.classList.remove('hidden');
+                    questionsContent.classList.add('hidden');
+                }
+            }
+
+            addNotification(emoji, senderName, timestamp) {
+                const list = document.getElementById('notifications-list');
+                if (!list) return;
+
+                // Remove empty placeholder
+                const empty = document.getElementById('notifications-empty');
+                if (empty) empty.remove();
+
+                const item = document.createElement('div');
+                item.className = "bg-gray-50 border border-gray-100 p-3 rounded-xl flex items-center gap-3 animate-slide-up";
+                item.innerHTML = `
+                    <span class="text-2xl">${emoji}</span>
+                    <div class="flex-1">
+                        <p class="text-sm font-semibold text-gray-800">${senderName}</p>
+                        <p class="text-[10px] text-gray-400">Sent a reaction</p>
+                    </div>
+                `;
+                list.prepend(item);
+
+                this.updateNotifBadge();
+                this.showToast(`${emoji} from ${senderName}`, "info");
+            }
+
+            updateNotifBadge() {
+                const list = document.getElementById('notifications-list');
+                const badge = document.getElementById('notif-badge');
+                if (!list || !badge) return;
+
+                const count = list.querySelectorAll('.animate-slide-up').length;
+                if (count > 0) {
+                    badge.textContent = count > 99 ? '99+' : String(count);
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+
+            clearNotifications() {
+                const list = document.getElementById('notifications-list');
+                if (!list) return;
+
+                list.innerHTML = `
+                    <div id="notifications-empty" class="text-center py-10 opacity-40">
+                        <i class="fa-regular fa-bell-slash text-2xl mb-2 text-gray-400"></i>
+                        <p class="text-xs text-gray-500">No notifications yet</p>
+                    </div>
+                `;
+
+                const badge = document.getElementById('notif-badge');
+                if (badge) badge.classList.add('hidden');
+
+                this.toggleModal('notifications');
+            }
+
+            updateStudentCount() {
+                const list = document.getElementById('students-list');
+                const count = document.getElementById('student-count');
+                if (!count || !list) return;
+                count.innerText = String(list.children.length);
+            }
+
+            renderStudentListItem(student) {
+                const list = document.getElementById('students-list');
+                if (!list) return;
+
+                // Remove empty placeholder
+                const empty = document.getElementById('students-empty');
+                if (empty) empty.remove();
+
+                // Check if already exists
+                if (document.getElementById(`student-item-${student.name}`)) return;
+
+                const langInfo = LANGUAGES.find(l => l.code === student.lang);
+                const flag = langInfo?.flag || '';
+
+                const card = document.createElement('div');
+                card.id = `student-item-${student.name}`;
+                card.className = "bg-white border border-gray-100 p-3 rounded-xl shadow-sm flex items-center justify-between gap-3";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                            ${student.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">${student.name}</p>
+                            <p class="text-[11px] text-gray-500">${flag} ${student.langName || student.lang}</p>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full uppercase">Online</span>
+                `;
+                list.appendChild(card);
             }
 
             ensureTeacherListHasNoPlaceholder() {
@@ -1656,6 +2195,42 @@
                 list.prepend(card);
             }
 
+            renderHandRaiseCard(reqKey, req) {
+                const list = document.getElementById('teacher-questions');
+                if (!list) return;
+                this.ensureTeacherListHasNoPlaceholder();
+
+                const card = document.createElement('div');
+                card.className = "bg-white border border-amber-100 p-3 rounded-xl shadow-sm animate-slide-up hover:border-amber-300 transition-colors";
+                card.innerHTML = `
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded uppercase">${req.senderName}</span>
+                                <span class="text-[10px] font-black text-amber-600 uppercase tracking-tight">raised hand</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1 truncate">Language: ${(req.lang || '').toUpperCase()}</p>
+                        </div>
+                        <button class="approve-chat btn-modern px-3 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i>
+                            Approve
+                        </button>
+                    </div>
+                `;
+
+                const btn = card.querySelector('.approve-chat');
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    btn.disabled = true;
+                    btn.classList.add('opacity-70');
+                    await this.approveChatRequest(reqKey, req);
+                    card.remove();
+                });
+
+                list.prepend(card);
+            }
+
             async approveMicRequest(reqKey, req) {
                 try {
                     await push(ref(this.db, `chats/${this.state.room}/approvedSpeakers`), {
@@ -1665,6 +2240,20 @@
                     });
                     await remove(ref(this.db, `chats/${this.state.room}/requests/${reqKey}`));
                     this.showToast(`Approved: ${req.senderName}`, "success");
+                } catch (e) {
+                    this.showToast("Approve failed: " + e.message, "error");
+                }
+            }
+
+            async approveChatRequest(reqKey, req) {
+                try {
+                    await push(ref(this.db, `chats/${this.state.room}/approvedChat`), {
+                        speakerName: req.senderName,
+                        approvedAt: Date.now(),
+                        teacherLang: this.state.lang
+                    });
+                    await remove(ref(this.db, `chats/${this.state.room}/handRaises/${reqKey}`));
+                    this.showToast(`Chat approved: ${req.senderName}`, "success");
                 } catch (e) {
                     this.showToast("Approve failed: " + e.message, "error");
                 }
@@ -1707,6 +2296,24 @@
                     });
                 }
 
+                list.prepend(card);
+            }
+
+            renderStudentChatCard({ sender, text, original }) {
+                const list = document.getElementById('teacher-questions');
+                if (!list) return;
+                this.ensureTeacherListHasNoPlaceholder();
+
+                const card = document.createElement('div');
+                card.className = "bg-white border border-sky-100 p-3 rounded-xl shadow-sm animate-slide-up hover:border-sky-300 transition-colors";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-1">
+                        <span class="text-[10px] font-bold bg-sky-50 text-sky-600 px-1.5 py-0.5 rounded uppercase">${sender}</span>
+                        <span class="text-[10px] font-black text-sky-600 uppercase tracking-tight">chat</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 leading-snug">${text}</p>
+                    <p class="text-xs text-gray-400 italic mt-1 truncate">${original}</p>
+                `;
                 list.prepend(card);
             }
 
@@ -1852,6 +2459,15 @@
                     float.style.opacity = '0';
                     setTimeout(() => float.remove(), 1000);
                 }, 50);
+
+                // Send reaction to Firebase for teacher notification
+                if (this.state.role === 'student' && this.state.room) {
+                    push(ref(this.db, `chats/${this.state.room}/reactions`), {
+                        emoji: emoji,
+                        senderName: this.state.name,
+                        timestamp: Date.now()
+                    }).catch(() => {});
+                }
             }
 
             async translateText(text, source, target) {
