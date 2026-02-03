@@ -6,8 +6,10 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#3b82f6">
-    <link rel="manifest"
-        href='data:application/json,{"name":"Succes Class","short_name":"Succes","start_url":"./","display":"standalone","background_color":"#ffffff","theme_color":"#3b82f6","icons":[{"src":"pwa_icon.png","sizes":"512x512","type":"image/png"}]}'>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="./pwa_icon.png">
+    <link rel="apple-touch-icon" href="./pwa_icon.png">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Succes Class - Real-time Translation & Hybrid Learning</title>
@@ -382,8 +384,7 @@
                     <button id="notif-btn" onclick="App.toggleModal('notifications')" title="Notifications"
                         class="relative text-gray-400 hover:text-blue-500 transition-colors">
                         <i class="fa-solid fa-bell text-lg"></i>
-                        <span id="notif-badge"
-                            class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">0</span>
+                        <span id="notif-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">0</span>
                     </button>
                 </div>
             </header>
@@ -415,24 +416,19 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
                     <!-- Tab Header -->
                     <div class="px-4 py-2 bg-gray-50/50 border-b border-gray-100 flex items-center gap-4">
-                        <button id="tab-questions-btn" onclick="App.switchTeacherTab('questions')"
-                            class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 transition-colors">
+                        <button id="tab-questions-btn" onclick="App.switchTeacherTab('questions')" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 transition-colors">
                             <i class="fa-regular fa-comments"></i>
                             Questions
-                            <span id="question-count"
-                                class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+                            <span id="question-count" class="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
                         </button>
-                        <button id="tab-students-btn" onclick="App.switchTeacherTab('students')"
-                            class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:bg-gray-100 transition-colors">
+                        <button id="tab-students-btn" onclick="App.switchTeacherTab('students')" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-500 hover:bg-gray-100 transition-colors">
                             <i class="fa-solid fa-users"></i>
                             Students
-                            <span id="student-count"
-                                class="bg-gray-300 text-gray-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+                            <span id="student-count" class="bg-gray-300 text-gray-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
                         </button>
                     </div>
                     <!-- Questions Tab Content -->
-                    <div id="tab-questions-content"
-                        class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
+                    <div id="tab-questions-content" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
                         <!-- Cards injected here -->
                         <div id="teacher-questions"></div>
                         <div id="teacher-empty" class="text-center py-8 opacity-40">
@@ -441,8 +437,7 @@
                         </div>
                     </div>
                     <!-- Students Tab Content -->
-                    <div id="tab-students-content"
-                        class="hidden flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
+                    <div id="tab-students-content" class="hidden flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 custom-scrollbar">
                         <div id="students-list"></div>
                         <div id="students-empty" class="text-center py-8 opacity-40">
                             <i class="fa-solid fa-users text-2xl mb-2 text-gray-400"></i>
@@ -558,14 +553,12 @@
             <div class="absolute bottom-0 left-0 right-0 md:top-1/2 md:left-1/2 md:bottom-auto md:w-full md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 transition-transform transform translate-y-full"
                 id="notifications-panel">
                 <div class="bg-white rounded-t-3xl md:rounded-3xl shadow-2xl flex flex-col max-h-[60vh]">
-                    <div
-                        class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50 rounded-t-3xl">
+                    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50 rounded-t-3xl">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-bell text-blue-500"></i>
                             <h3 class="text-lg font-bold text-gray-900">Notifications</h3>
                         </div>
-                        <button onclick="App.clearNotifications()"
-                            class="text-xs text-gray-400 hover:text-red-500 font-semibold">Clear All</button>
+                        <button onclick="App.clearNotifications()" class="text-xs text-gray-400 hover:text-red-500 font-semibold">Clear All</button>
                     </div>
 
                     <div id="notifications-list" class="flex-1 overflow-y-auto p-3 space-y-2 custom-scrollbar">
@@ -584,11 +577,13 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded, remove, get, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-        import { createClient, LiveTranscriptionEvents } from 'https://cdn.jsdelivr.net/npm/@deepgram/sdk@3/+esm';
+        // Web Speech API initialization
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
+        const SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
 
         // --- CREDENTIALS ---
         const CREDENTIALS = {
-            DEEPGRAM: "11ee938d032ce7c36c6fa82338274be5e4ada847",
             CARTESIA: "sk_car_yWEX9Mp2LwKju8FXyosGhj",
             CARTESIA_VOICES: {
                 "en": "cbaf8084-f009-4838-a096-07ee2e6612b1", // Cathy
@@ -832,11 +827,30 @@
                     isAudioPlaying: false
                 };
 
-                // Teacher Deepgram
-                this.dgClient = null;
-                this.dgSocket = null;
-                this.mediaRecorder = null;
+                // Teacher Web Speech API
+                this.recognition = null;
                 this.wakeLock = null;
+
+                // VAD (Voice Activity Detection) Configuration
+                this.vadConfig = {
+                    silenceThreshold: 0.01,      // Volume below this = silence
+                    silenceDuration: 1500,       // ms of silence before segment ends
+                    minSpeechDuration: 300,      // ms minimum speech to count as valid
+                    sampleInterval: 100          // ms between volume checks
+                };
+
+                // Teacher VAD state
+                this.teacherVad = {
+                    audioContext: null,
+                    analyser: null,
+                    mediaStream: null,
+                    isSpeaking: false,
+                    silenceStart: null,
+                    speechStart: null,
+                    vadInterval: null,
+                    pendingTranscript: '',
+                    lastBroadcastTime: 0
+                };
 
                 // Student mic/request flow state
                 this.student = {
@@ -847,13 +861,21 @@
                     chatRequestPending: false,
                     chatApproved: false,
 
-                    dgClient: null,
-                    dgSocket: null,
+                    recognition: null,
                     mediaRecorder: null,
                     mediaStream: null,
                     audioChunks: [],
                     finalParts: [],
-                    lastInterim: ''
+                    lastInterim: '',
+                    // Student VAD state
+                    vad: {
+                        audioContext: null,
+                        analyser: null,
+                        isSpeaking: false,
+                        silenceStart: null,
+                        speechStart: null,
+                        vadInterval: null
+                    }
                 };
 
                 this.bindAll();
@@ -952,19 +974,9 @@
 
             registerServiceWorker() {
                 if ('serviceWorker' in navigator) {
-                    const swCode = `
-                        const CACHE_NAME = 'orbit-v1';
-                        const ASSETS = ['./', './index.html', './pwa_icon.png'];
-                        self.addEventListener('install', (e) => {
-                            e.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
-                        });
-                        self.addEventListener('fetch', (e) => {
-                            e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request)));
-                        });
-                    `;
-                    const blob = new Blob([swCode], { type: 'application/javascript' });
-                    const url = URL.createObjectURL(blob);
-                    navigator.serviceWorker.register(url).catch(err => console.log('SW failed', err));
+                    navigator.serviceWorker.register('./sw.js')
+                        .then(reg => console.log('SW registered:', reg.scope))
+                        .catch(err => console.log('SW failed:', err));
                 }
             }
 
@@ -1363,76 +1375,75 @@
                 if (this.student.recording) return;
 
                 try {
+                    // Check Web Speech API support
+                    if (!SpeechRecognition) {
+                        throw new Error('Web Speech API not supported in this browser');
+                    }
+
                     // Reset capture buffers
-                    this.student.audioChunks = [];
                     this.student.finalParts = [];
                     this.student.lastInterim = '';
 
-                    // Start media stream
+                    // Start media stream for audio recording
                     this.student.mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+                    // Start VAD monitoring for student
+                    this.startStudentVad(this.student.mediaStream);
 
                     // Wake Lock (best-effort)
                     if ('wakeLock' in navigator) {
                         try { this.wakeLock = await navigator.wakeLock.request('screen'); } catch (_) { }
                     }
 
-                    // Start Deepgram live
-                    this.student.dgClient = createClient(CREDENTIALS.DEEPGRAM);
-                    this.student.dgSocket = this.student.dgClient.listen.live({
-                        model: "nova-3",
-                        language: (this.state.lang || 'en').split('-')[0],
-                        smart_format: true,
-                        punctuation: true,
-                        interim_results: true,
-                        endpointing: 250,
-                        utterance_end_ms: 500
-                    });
+                    // Setup Web Speech Recognition
+                    this.student.recognition = new SpeechRecognition();
+                    this.student.recognition.continuous = true;
+                    this.student.recognition.interimResults = true;
+                    this.student.recognition.lang = this.state.lang || 'en-US';
+                    this.student.recognition.maxAlternatives = 1;
 
-                    await new Promise((resolve, reject) => {
-                        this.student.dgSocket.on(LiveTranscriptionEvents.Open, () => {
-                            // MediaRecorder (also captures audio chunks to send later)
-                            const options = {};
-                            try { options.mimeType = 'audio/webm'; } catch (_) { }
-                            this.student.mediaRecorder = new MediaRecorder(this.student.mediaStream, options);
+                    // Setup MediaRecorder for audio capture
+                    const options = {};
+                    try { options.mimeType = 'audio/webm'; } catch (_) { }
+                    this.student.mediaRecorder = new MediaRecorder(this.student.mediaStream, options);
+                    this.student.audioChunks = [];
 
-                            this.student.mediaRecorder.ondataavailable = (e) => {
-                                if (e.data && e.data.size > 0) {
-                                    this.student.audioChunks.push(e.data);
-                                    if (this.student.dgSocket && this.student.dgSocket.getReadyState && this.student.dgSocket.getReadyState() === 1) {
-                                        this.student.dgSocket.send(e.data);
-                                    }
-                                }
-                            };
+                    this.student.mediaRecorder.ondataavailable = (e) => {
+                        if (e.data && e.data.size > 0) {
+                            this.student.audioChunks.push(e.data);
+                        }
+                    };
 
-                            this.student.mediaRecorder.start(250);
-                            this.student.recording = true;
-                            this.updateStudentMicButton();
-                            resolve();
-                        });
+                    // Speech recognition event handlers
+                    this.student.recognition.onresult = (event) => {
+                        let interimTranscript = '';
+                        let finalTranscript = '';
 
-                        this.student.dgSocket.on(LiveTranscriptionEvents.Transcript, (data) => {
-                            const t = data?.channel?.alternatives?.[0]?.transcript || '';
-                            if (!t) return;
-                            this.student.lastInterim = t;
-
-                            if (data.is_final) {
-                                this.student.finalParts.push(t);
+                        for (let i = event.resultIndex; i < event.results.length; i++) {
+                            const transcript = event.results[i][0].transcript;
+                            if (event.results[i].isFinal) {
+                                finalTranscript += transcript;
+                            } else {
+                                interimTranscript += transcript;
                             }
-                        });
-
-                        // Best-effort error hooks
-                        if (LiveTranscriptionEvents.Error) {
-                            this.student.dgSocket.on(LiveTranscriptionEvents.Error, (err) => reject(err));
-                        }
-                        if (LiveTranscriptionEvents.Close) {
-                            this.student.dgSocket.on(LiveTranscriptionEvents.Close, () => { /* ignore */ });
                         }
 
-                        // Safety timeout: if Open never happens
-                        setTimeout(() => {
-                            if (!this.student.recording) reject(new Error("Deepgram connection timeout"));
-                        }, 8000);
-                    });
+                        this.student.lastInterim = interimTranscript;
+
+                        if (finalTranscript) {
+                            this.student.finalParts.push(finalTranscript.trim());
+                        }
+                    };
+
+                    this.student.recognition.onerror = (event) => {
+                        console.error('Student speech recognition error:', event.error);
+                    };
+
+                    // Start recognition and recording
+                    this.student.recognition.start();
+                    this.student.mediaRecorder.start(250);
+                    this.student.recording = true;
+                    this.updateStudentMicButton();
 
                     this.showToast("Recording...", "info");
                 } catch (e) {
@@ -1442,6 +1453,12 @@
             }
 
             async stopStudentCapture(submit = true) {
+                // Stop VAD monitoring first
+                this.stopStudentVad();
+                
+                // Stop speech recognition
+                try { if (this.student.recognition) this.student.recognition.stop(); } catch (_) { }
+
                 // Stop recorder first (to flush last chunk)
                 const recorder = this.student.mediaRecorder;
                 if (recorder && recorder.state !== 'inactive') {
@@ -1450,9 +1467,6 @@
                         try { recorder.stop(); } catch (_) { resolve(); }
                     });
                 }
-
-                // Stop DG socket
-                try { if (this.student.dgSocket) this.student.dgSocket.finish(); } catch (_) { }
 
                 // Stop tracks
                 try {
@@ -1472,10 +1486,9 @@
                 const chunks = this.student.audioChunks.slice();
                 const mimeType = (this.student.mediaRecorder && this.student.mediaRecorder.mimeType) ? this.student.mediaRecorder.mimeType : 'audio/webm';
 
+                this.student.recognition = null;
                 this.student.mediaRecorder = null;
                 this.student.mediaStream = null;
-                this.student.dgClient = null;
-                this.student.dgSocket = null;
                 this.student.audioChunks = [];
                 this.student.finalParts = [];
                 this.student.lastInterim = '';
@@ -1701,7 +1714,7 @@
                 stream.scrollTop = stream.scrollHeight;
             }
 
-            // --- TEACHER LOGIC (DEEPGRAM + REQUESTS + STUDENT RESPONSES) ---
+            // --- TEACHER LOGIC (WEB SPEECH + REQUESTS + STUDENT RESPONSES) ---
             async initTeacher() {
                 document.getElementById('teacher-code-display').innerText = this.state.room;
 
@@ -2164,16 +2177,208 @@
                 }
             }
 
+            // ========== VAD (Voice Activity Detection) Methods ==========
+            
+            /**
+             * Initialize VAD for a given audio stream
+             * @param {MediaStream} stream - The audio stream to analyze
+             * @returns {Object} - { audioContext, analyser, dataArray }
+             */
+            initVadAnalyser(stream) {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                analyser.fftSize = 512;
+                analyser.smoothingTimeConstant = 0.5;
+                
+                const source = audioContext.createMediaStreamSource(stream);
+                source.connect(analyser);
+                
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                
+                return { audioContext, analyser, dataArray };
+            }
+
+            /**
+             * Get current volume level from analyser (0-1 normalized)
+             * @param {AnalyserNode} analyser 
+             * @param {Uint8Array} dataArray 
+             * @returns {number} - Volume level 0-1
+             */
+            getVolumeLevel(analyser, dataArray) {
+                analyser.getByteFrequencyData(dataArray);
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) {
+                    sum += dataArray[i];
+                }
+                const average = sum / dataArray.length;
+                return average / 255; // Normalize to 0-1
+            }
+
+            /**
+             * Start VAD monitoring for teacher
+             * @param {MediaStream} stream 
+             */
+            startTeacherVad(stream) {
+                const { audioContext, analyser, dataArray } = this.initVadAnalyser(stream);
+                
+                this.teacherVad.audioContext = audioContext;
+                this.teacherVad.analyser = analyser;
+                this.teacherVad.mediaStream = stream;
+                this.teacherVad.isSpeaking = false;
+                this.teacherVad.silenceStart = null;
+                this.teacherVad.speechStart = null;
+                this.teacherVad.pendingTranscript = '';
+
+                this.teacherVad.vadInterval = setInterval(() => {
+                    const volume = this.getVolumeLevel(analyser, dataArray);
+                    const now = Date.now();
+                    
+                    if (volume > this.vadConfig.silenceThreshold) {
+                        // Voice detected
+                        if (!this.teacherVad.isSpeaking) {
+                            this.teacherVad.isSpeaking = true;
+                            this.teacherVad.speechStart = now;
+                            this.teacherVad.silenceStart = null;
+                            console.log('[VAD] Speech started');
+                        }
+                    } else {
+                        // Silence detected
+                        if (this.teacherVad.isSpeaking) {
+                            if (!this.teacherVad.silenceStart) {
+                                this.teacherVad.silenceStart = now;
+                            } else if (now - this.teacherVad.silenceStart >= this.vadConfig.silenceDuration) {
+                                // Silence exceeded threshold - end segment
+                                const speechDuration = this.teacherVad.silenceStart - (this.teacherVad.speechStart || now);
+                                
+                                if (speechDuration >= this.vadConfig.minSpeechDuration) {
+                                    // Valid speech segment ended - flush pending transcript
+                                    if (this.teacherVad.pendingTranscript.trim()) {
+                                        console.log('[VAD] Flushing segment:', this.teacherVad.pendingTranscript.trim());
+                                        this.broadcastMessage(this.teacherVad.pendingTranscript.trim());
+                                        this.teacherVad.pendingTranscript = '';
+                                    }
+                                }
+                                
+                                this.teacherVad.isSpeaking = false;
+                                this.teacherVad.speechStart = null;
+                                console.log('[VAD] Speech ended');
+                            }
+                        }
+                    }
+                }, this.vadConfig.sampleInterval);
+            }
+
+            /**
+             * Stop teacher VAD monitoring
+             */
+            stopTeacherVad() {
+                if (this.teacherVad.vadInterval) {
+                    clearInterval(this.teacherVad.vadInterval);
+                    this.teacherVad.vadInterval = null;
+                }
+                
+                // Flush any remaining transcript
+                if (this.teacherVad.pendingTranscript.trim()) {
+                    this.broadcastMessage(this.teacherVad.pendingTranscript.trim());
+                    this.teacherVad.pendingTranscript = '';
+                }
+                
+                try {
+                    if (this.teacherVad.audioContext && this.teacherVad.audioContext.state !== 'closed') {
+                        this.teacherVad.audioContext.close();
+                    }
+                } catch (_) {}
+                
+                this.teacherVad.audioContext = null;
+                this.teacherVad.analyser = null;
+                this.teacherVad.isSpeaking = false;
+            }
+
+            /**
+             * Start VAD monitoring for student
+             * @param {MediaStream} stream 
+             */
+            startStudentVad(stream) {
+                const { audioContext, analyser, dataArray } = this.initVadAnalyser(stream);
+                
+                this.student.vad.audioContext = audioContext;
+                this.student.vad.analyser = analyser;
+                this.student.vad.isSpeaking = false;
+                this.student.vad.silenceStart = null;
+                this.student.vad.speechStart = null;
+
+                this.student.vad.vadInterval = setInterval(() => {
+                    const volume = this.getVolumeLevel(analyser, dataArray);
+                    const now = Date.now();
+                    
+                    if (volume > this.vadConfig.silenceThreshold) {
+                        // Voice detected
+                        if (!this.student.vad.isSpeaking) {
+                            this.student.vad.isSpeaking = true;
+                            this.student.vad.speechStart = now;
+                            this.student.vad.silenceStart = null;
+                        }
+                    } else {
+                        // Silence detected
+                        if (this.student.vad.isSpeaking) {
+                            if (!this.student.vad.silenceStart) {
+                                this.student.vad.silenceStart = now;
+                            }
+                        }
+                    }
+                }, this.vadConfig.sampleInterval);
+            }
+
+            /**
+             * Stop student VAD monitoring
+             */
+            stopStudentVad() {
+                if (this.student.vad.vadInterval) {
+                    clearInterval(this.student.vad.vadInterval);
+                    this.student.vad.vadInterval = null;
+                }
+                
+                try {
+                    if (this.student.vad.audioContext && this.student.vad.audioContext.state !== 'closed') {
+                        this.student.vad.audioContext.close();
+                    }
+                } catch (_) {}
+                
+                this.student.vad.audioContext = null;
+                this.student.vad.analyser = null;
+                this.student.vad.isSpeaking = false;
+            }
+
+            /**
+             * Check if student is still speaking (for auto-stop detection)
+             * @returns {boolean}
+             */
+            isStudentCurrentlySpeaking() {
+                if (!this.student.vad.analyser) return true; // Assume speaking if no VAD
+                
+                const now = Date.now();
+                const silenceStart = this.student.vad.silenceStart;
+                
+                // If silence has been going for longer than threshold, not speaking
+                if (silenceStart && (now - silenceStart) >= this.vadConfig.silenceDuration) {
+                    return false;
+                }
+                
+                return true;
+            }
+
+            // ========== End VAD Methods ==========
+
             async toggleMic() {
                 if (this.state.isMicActive) {
                     // STOP
-                    this.stopDeepgram();
+                    this.stopWebSpeech();
                     this.state.isMicActive = false;
                     this.updateMicUI(false);
                 } else {
                     // START
                     try {
-                        await this.startDeepgram();
+                        await this.startWebSpeech();
                         this.state.isMicActive = true;
                         this.updateMicUI(true);
                         this.showToast("Broadcasting Live", "success");
@@ -2186,54 +2391,104 @@
                 }
             }
 
-            async startDeepgram() {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            async startWebSpeech() {
+                if (!SpeechRecognition) {
+                    throw new Error('Web Speech API not supported in this browser');
+                }
 
                 // Wake Lock
                 if ('wakeLock' in navigator) {
                     try { this.wakeLock = await navigator.wakeLock.request('screen'); } catch (e) { }
                 }
 
-                this.dgClient = createClient(CREDENTIALS.DEEPGRAM);
-                this.dgSocket = this.dgClient.listen.live({
-                    model: "nova-3",
-                    language: this.state.lang.split('-')[0], // Handle en-US etc
-                    smart_format: true,
-                    punctuation: true,
-                    interim_results: true,
-                    endpointing: 250, // Ultra-fast endpointing for 1.5s latency target
-                    utterance_end_ms: 500
-                });
+                // Get microphone stream for VAD
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                this.teacherVad.mediaStream = stream;
+                
+                // Start VAD monitoring
+                this.startTeacherVad(stream);
 
-                this.dgSocket.on(LiveTranscriptionEvents.Open, () => {
-                    this.mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
-                    this.mediaRecorder.ondataavailable = (e) => {
-                        if (e.data.size > 0 && this.dgSocket.getReadyState() === 1) {
-                            this.dgSocket.send(e.data);
+                this.recognition = new SpeechRecognition();
+                this.recognition.continuous = true;
+                this.recognition.interimResults = true;
+                this.recognition.lang = this.state.lang || 'en-US';
+                this.recognition.maxAlternatives = 1;
+
+                this.recognition.onstart = () => {
+                    console.log('Speech recognition started with VAD');
+                };
+
+                this.recognition.onresult = (event) => {
+                    let interimTranscript = '';
+                    let finalTranscript = '';
+
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcript;
+                        } else {
+                            interimTranscript += transcript;
                         }
-                    };
-                    this.mediaRecorder.start(250);
-                });
-
-                this.dgSocket.on(LiveTranscriptionEvents.Transcript, (data) => {
-                    const transcript = data.channel.alternatives[0].transcript;
-                    if (transcript && data.is_final) {
-                        this.broadcastMessage(transcript);
                     }
 
                     // Live UI Update
                     const ui = document.getElementById('teacher-transcript');
-                    if (transcript) ui.innerText = transcript;
-                });
+                    if (ui) {
+                        ui.innerText = (this.teacherVad.pendingTranscript + ' ' + finalTranscript + interimTranscript).trim();
+                    }
+
+                    // VAD-based segmentation: accumulate transcripts and let VAD decide when to broadcast
+                    if (finalTranscript) {
+                        this.teacherVad.pendingTranscript += ' ' + finalTranscript.trim();
+                        this.teacherVad.pendingTranscript = this.teacherVad.pendingTranscript.trim();
+                        
+                        // If VAD detects extended silence, it will broadcast automatically
+                        // But also broadcast immediately if not speaking (silence already detected)
+                        if (!this.teacherVad.isSpeaking && this.teacherVad.pendingTranscript) {
+                            console.log('[VAD] Immediate broadcast (not speaking):', this.teacherVad.pendingTranscript);
+                            this.broadcastMessage(this.teacherVad.pendingTranscript);
+                            this.teacherVad.pendingTranscript = '';
+                        }
+                    }
+                };
+
+                this.recognition.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                    this.showToast(`Speech error: ${event.error}`, 'error');
+                };
+
+                this.recognition.onend = () => {
+                    if (this.state.isMicActive) {
+                        // Restart if still supposed to be active
+                        setTimeout(() => {
+                            try {
+                                this.recognition.start();
+                            } catch (e) {
+                                console.log('Recognition restart failed:', e);
+                            }
+                        }, 100);
+                    }
+                };
+
+                this.recognition.start();
             }
 
-            stopDeepgram() {
-                try { if (this.mediaRecorder) this.mediaRecorder.stop(); } catch (_) { }
-                try { if (this.dgSocket) this.dgSocket.finish(); } catch (_) { }
+            stopWebSpeech() {
+                // Stop VAD monitoring first (will flush pending transcript)
+                this.stopTeacherVad();
+                
+                // Stop media stream tracks
+                try {
+                    if (this.teacherVad.mediaStream) {
+                        this.teacherVad.mediaStream.getTracks().forEach(t => t.stop());
+                        this.teacherVad.mediaStream = null;
+                    }
+                } catch (_) { }
+                
+                try { if (this.recognition) this.recognition.stop(); } catch (_) { }
                 try { if (this.wakeLock) this.wakeLock.release(); } catch (_) { }
 
-                this.mediaRecorder = null;
-                this.dgSocket = null;
+                this.recognition = null;
             }
 
             updateMicUI(active) {
@@ -2301,16 +2556,36 @@
                         emoji: emoji,
                         senderName: this.state.name,
                         timestamp: Date.now()
-                    }).catch(() => { });
+                    }).catch(() => {});
                 }
+            }
+
+            // Helper: Remove periods after ok/okay/okey to prevent sentence splitting
+            cleanOkeyPeriods(text) {
+                if (!text) return text;
+                // Remove period after standalone ok/okay/okey/oke/okee/oké at start or as single word
+                // Pattern: "Ok." or "Okay." or "Okey." etc followed by space or end
+                return text
+                    .replace(/^(ok[eéy]*)\.\s*/gi, '$1 ')  // At start: "Ok. Hello" -> "Ok Hello"
+                    .replace(/\s(ok[eéy]*)\.\s*/gi, ' $1 ') // Mid-sentence after space
+                    .replace(/^(ok[eéy]*)\.$/gi, '$1')      // Standalone: "Ok." -> "Ok"
+                    .trim();
             }
 
             async translateText(text, source, target) {
                 if (!text) return '';
                 if (!source || !target) return text;
                 if (source === target) return text;
+                
+                // Normalize Dutch/Flemish "okey" variants before translation
+                let normalizedText = text;
+                if (source === 'nl' || source === 'nl-BE') {
+                    // Replace Dutch "okey" variants with standard "okay" for better translation
+                    normalizedText = text.replace(/\b(oké|okee|okey|oke)\b/gi, 'okay');
+                }
+                
                 try {
-                    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${encodeURI(text)}`);
+                    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${encodeURI(normalizedText)}`);
                     const json = await res.json();
                     return json[0][0][0];
                 } catch (e) { return text; }
